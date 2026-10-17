@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.example.com/</loc></url>
+  <url><loc>https://www.example.com/guides/index.html</loc></url>
+  <url><loc>https://www.example.com/guides/tolerance-basics.html</loc></url>
+  <url><loc>https://www.example.com/guides/iso-2768-general-tolerances.html</loc></url>
+  <url><loc>https://www.example.com/guides/tolerance-stack-up.html</loc></url>
+  <url><loc>https://www.example.com/guides/limits-and-fits-iso-286.html</loc></url>
+  <url><loc>https://www.example.com/guides/gdt-symbols.html</loc></url>
+  <url><loc>https://www.example.com/guides/how-to-do-dfm.html</loc></url>
+  <url><loc>https://www.example.com/guides/how-to-do-dfa.html</loc></url>
+  <url><loc>https://www.example.com/guides/should-cost-analysis.html</loc></url>
+  <url><loc>https://www.example.com/guides/machining-machines.html</loc></url>
+  <url><loc>https://www.example.com/guides/material-numbers-wnr.html</loc></url>
+  <url><loc>https://www.example.com/guides/3d-printing-design-guide.html</loc></url>
+  <url><loc>https://www.example.com/guides/drilling-and-tapping.html</loc></url>
+  <url><loc>https://www.example.com/guides/sheet-metal-design-rules.html</loc></url>
+  <url><loc>https://www.example.com/about.html</loc></url>
+  <url><loc>https://www.example.com/privacy.html</loc></url>
+  <url><loc>https://www.example.com/terms.html</loc></url>
+</urlset>

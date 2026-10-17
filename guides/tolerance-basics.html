@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Engineering tolerances explained for beginners | DFMA Review Studio</title><meta name="description" content="What a tolerance is, how to read any dimension, and which tolerance tool answers which question. Written for new engineers.">
+<link rel="canonical" href="https://www.example.com/guides/tolerance-basics.html"><meta property="og:title" content="Engineering tolerances explained for beginners | DFMA Review Studio"><meta property="og:description" content="What a tolerance is, how to read any dimension, and which tolerance tool answers which question. Written for new engineers."><meta property="og:type" content="article">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../site.css">
+<script src="../ads.js" defer></script>
+</head><body><header class="site-top"><a class="brand" href="../index.html"><svg width="22" height="22" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" style="vertical-align:-5px;margin-right:8px"><circle cx="14" cy="14" r="7.5"/><path d="M14 1.5v7M14 19.5v7M1.5 14h7M19.5 14h7"/><circle cx="14" cy="14" r="2.3" fill="#8ea2ff" stroke="none"/></svg>DFMA Review Studio</a><a href="../guides/index.html">Guides</a><a href="../about.html">About</a><a class="cta" href="../index.html#upload">Open the free tool</a></header><main class="article"><p class="crumbs"><a href="index.html">Guides</a> › Engineering tolerances explained for beginners</p><h1>Engineering tolerances explained for beginners</h1><p class="lead">What a tolerance is, how to read any dimension, and which tolerance tool answers which question. Written for new engineers.</p>
+<div class="guide">
+        <div class="panel"><div class="ph"><h2>What a tolerance is</h2></div>
+          <p class="gl">No machine makes a part to exactly the size on the drawing. If you ask for 20 mm you will get 19.98 one time and 20.03 the next. A <b>tolerance</b> tells the maker how far from the drawing size the part may be and still work.</p>
+          <p class="gl" style="margin-top:8px">Example: <b>20 ±0.1</b> means any size from <b>19.9</b> to <b>20.1 mm</b> is good. A part at 20.12 is scrap. The total band here is 0.2 mm.</p>
+          <div class="callout" style="margin-top:10px"><b>Why it matters for cost.</b> A small tolerance needs slower machines, extra operations and more inspection. Make a size tight only where two parts touch, slide or seal. Everywhere else, a looser tolerance is cheaper and works just as well.</div></div>
+        <div class="adslot" data-slot="inArticle"></div><div class="panel"><div class="ph"><h2>Words you will see</h2></div>
+          <dl class="bdl" style="grid-template-columns:190px minmax(0,1fr)">
+            <dt>Nominal size</dt><dd>The size written on the drawing, the target. In 20 ±0.1 it is 20.</dd>
+            <dt>Upper limit, lower limit</dt><dd>The largest and smallest size allowed. For 20 ±0.1 they are 20.1 and 19.9.</dd>
+            <dt>Deviation</dt><dd>How far a limit is from the nominal size, with a sign. In 25 +0.2/−0.1 the upper deviation is +0.2 and the lower is −0.1.</dd>
+            <dt>Bilateral tolerance</dt><dd>Allowed both ways from nominal, for example ±0.1 or +0.2/−0.1.</dd>
+            <dt>Unilateral tolerance</dt><dd>Allowed one way only, for example 25 −0.10/0 means 24.90 to 25.00.</dd>
+            <dt>Limit dimension</dt><dd>The two limits written directly, for example 20.00–20.13.</dd>
+            <dt>Tolerance types in CAD</dt><dd>The Tolerance/Precision box in SOLIDWORKS and similar tools offers: <b>None</b> (the general tolerance applies), <b>Basic</b> (a boxed exact value, its tolerance comes from a GD&amp;T frame), <b>Bilateral</b> (+0.2/−0.1), <b>Symmetric</b> (±0.1), <b>Limit</b> (20.00–20.13), <b>MIN</b> (at least this size, no upper limit) and <b>MAX</b> (at most this size). The Upper and lower limits box reads all of them.</dd>
+            <dt>µm (micrometre)</dt><dd>One thousandth of a millimetre. 0.021 mm = 21 µm. Fits are listed in µm because the numbers are small.</dd>
+            <dt>General tolerance</dt><dd>A note in the title block, such as ISO 2768-mK, that gives the tolerance for every size that has none written next to it.</dd>
+            <dt>Fit</dt><dd>How a shaft sits in a hole: with a gap (clearance), pressed in (interference), or in between (transition).</dd>
+            <dt>IT grade</dt><dd>A number from ISO 286 that sets how wide a tolerance band is for a size. Smaller number, tighter band. IT7 at 20 mm is 21 µm wide.</dd>
+            <dt>GD&amp;T</dt><dd>Geometric tolerances: shape, orientation and position (flat, square, round, in the right place), written in a feature control frame.</dd>
+            <dt>Datum</dt><dd>A reference face, axis or point (A, B, C) that measurements start from, like the corner you measure a room from.</dd>
+            <dt>MMC, LMC</dt><dd>Maximum and least material condition: the size with the most metal (smallest hole, largest pin) and the least metal (largest hole, smallest pin).</dd>
+            <dt>Stack-up</dt><dd>Adding up the tolerances of several parts in a row to see how big a gap can get.</dd>
+          </dl></div>
+        <div class="panel"><div class="ph"><h2>Read any dimension in three steps</h2></div>
+          <ol class="gsteps">
+            <li><b>Find the nominal size.</b><span>The main number, for example 25.</span></li>
+            <li><b>Find the tolerance.</b><span>Next to the number (±0.1, +0.2/−0.1, H7) or, if there is nothing, in the general tolerance note of the title block.</span></li>
+            <li><b>Work out the two limits.</b><span>Add the upper deviation for the largest size and the lower deviation for the smallest. The Upper and lower limits box on the Limits and fits tab does this for you.</span></li>
+          </ol>
+          <div class="tbl-wrap" style="margin-top:12px"><table class="t gtbl"><thead><tr><th>Written on the drawing</th><th>Smallest allowed</th><th>Largest allowed</th><th>How</th></tr></thead><tbody>
+            <tr><td><b>20 ±0.1</b></td><td>19.900</td><td>20.100</td><td>20 − 0.1 and 20 + 0.1</td></tr>
+            <tr><td><b>25 −0.10/0</b></td><td>24.900</td><td>25.000</td><td>Only allowed to be smaller</td></tr>
+            <tr><td><b>Ø20 H7</b></td><td>20.000</td><td>20.021</td><td>ISO 286: H7 at 20 mm is +21 / 0 µm</td></tr>
+            <tr><td><b>Ø20 g6</b></td><td>19.980</td><td>19.993</td><td>ISO 286: g6 at 20 mm is −7 / −20 µm</td></tr>
+            <tr><td><b>46</b> on an ISO 2768-mK drawing</td><td>45.700</td><td>46.300</td><td>ISO 2768 class m, 30 to 120 mm row: ±0.3</td></tr>
+          </tbody></table></div>
+          <div class="row" style="margin-top:10px"><a class="btn primary sm" href="../index.html#tolguide">Open the calculator</a></div></div>
+        <div class="panel"><div class="ph"><h2>Which tool answers which question</h2></div>
+          <div class="tbl-wrap"><table class="t gtbl"><thead><tr><th>Your question</th><th>Use this</th><th></th></tr></thead><tbody>
+            <tr><td>A size has no tolerance written. How much may it be off?</td><td>General tolerance lookup (ISO 2768)</td><td><a class="btn primary sm" href="../index.html#tolguide">Open the calculator</a></td></tr>
+            <tr><td>I have a frame like ⌖ Ø0.2 Ⓜ | A | B | C. What does it mean, and is mine correct?</td><td>Feature control frame builder</td><td><a class="btn primary sm" href="../index.html#tolguide">Open the calculator</a></td></tr>
+            <tr><td>My hole came out bigger. How much extra position tolerance do I get?</td><td>Bonus tolerance at MMC</td><td><a class="btn primary sm" href="../index.html#tolguide">Open the calculator</a></td></tr>
+            <tr><td>Several parts sit in a row. Will the gap ever close or get too big?</td><td>Stack-up calculator</td><td><a class="btn primary sm" href="../index.html#tolguide">Open the calculator</a></td></tr>
+            <tr><td>Bolts pass through two parts. How much position tolerance can each hole have?</td><td>Fastener formulas</td><td><a class="btn primary sm" href="../index.html#tolguide">Open the calculator</a></td></tr>
+            <tr><td>A shaft goes into a hole. Which classes give a sliding, locating or press fit?</td><td>Hole and shaft fit (ISO 286)</td><td><a class="btn primary sm" href="../index.html#tolguide">Open the calculator</a></td></tr>
+            <tr><td>My supplier gave me limits, not classes. What fit do I get?</td><td>Use your own limits</td><td><a class="btn primary sm" href="../index.html#tolguide">Open the calculator</a></td></tr>
+          </tbody></table></div></div>
+        <div class="panel"><div class="ph"><h2>A simple routine for your own part</h2></div>
+          <ol class="gsteps">
+            <li><b>Mark what touches what.</b><span>On a print or a sketch, circle every face, hole and pin that touches, slides on or seals against another part. Only these need a tight tolerance.</span></li>
+            <li><b>Pick a fit for every hole and shaft pair.</b><span>Decide: must it slide, locate accurately, or stay pressed together? Use the Limits and fits tab to get the classes and numbers.</span></li>
+            <li><b>Check every gap that matters with a stack-up.</b><span>For example a cover over a shaft, or a part that must not hit another. Use the worked example on the stack-up tab as a pattern.</span></li>
+            <li><b>Let the general tolerance cover the rest.</b><span>Write ISO 2768-mK (or your company's note) in the title block. Use the charts to check the result is loose enough to be cheap and tight enough to work.</span></li>
+            <li><b>Add GD&amp;T where position or shape matters.</b><span>Bolt hole patterns, bearing seats, sealing faces. Use the frame builder and let it check the rules.</span></li>
+            <li><b>Check the cost.</b><span>Open DFM review and look at the should-cost estimate. If tight tolerances drive the price, relax the ones that are not at an interface.</span></li>
+          </ol></div>
+      </div><div class="adslot" data-slot="bottom"></div>
+<div class="panel gex"><div class="ph"><h2>Try it on your own part</h2></div><p class="gl">Upload a STEP model or a PDF drawing to the free DFMA Review Studio tool. Everything runs in your browser; your files are not uploaded.</p><p><a class="btn primary" href="../index.html#tolguide">Open the tool</a></p></div></main><footer class="site-foot"><span>© DFMA Review Studio</span><a href="../guides/index.html">Guides</a><a href="../about.html">About and contact</a><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of use</a><span>Results are a guide only. Check critical values against the standards and your supplier.</span></footer></body></html>

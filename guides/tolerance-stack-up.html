@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tolerance stack-up analysis: worst case, RSS and Monte Carlo | DFMA Review Studio</title><meta name="description" content="Step-by-step tolerance stack-up with a worked example, sensitivity, distributions, fastener formulas and common mistakes.">
+<link rel="canonical" href="https://www.example.com/guides/tolerance-stack-up.html"><meta property="og:title" content="Tolerance stack-up analysis: worst case, RSS and Monte Carlo | DFMA Review Studio"><meta property="og:description" content="Step-by-step tolerance stack-up with a worked example, sensitivity, distributions, fastener formulas and common mistakes."><meta property="og:type" content="article">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../site.css">
+<script src="../ads.js" defer></script>
+</head><body><header class="site-top"><a class="brand" href="../index.html"><svg width="22" height="22" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" style="vertical-align:-5px;margin-right:8px"><circle cx="14" cy="14" r="7.5"/><path d="M14 1.5v7M14 19.5v7M1.5 14h7M19.5 14h7"/><circle cx="14" cy="14" r="2.3" fill="#8ea2ff" stroke="none"/></svg>DFMA Review Studio</a><a href="../guides/index.html">Guides</a><a href="../about.html">About</a><a class="cta" href="../index.html#upload">Open the free tool</a></header><main class="article"><p class="crumbs"><a href="index.html">Guides</a> › Tolerance stack-up analysis: worst case, RSS and Monte Carlo</p><h1>Tolerance stack-up analysis: worst case, RSS and Monte Carlo</h1><p class="lead">Step-by-step tolerance stack-up with a worked example, sensitivity, distributions, fastener formulas and common mistakes.</p>
+<div class="guide">
+        <div class="panel"><div class="ph"><h2>What a stack-up is</h2></div>
+          <p class="gl">When several parts sit in a row, their size errors add up. Two blocks in a pocket: if the pocket comes out small and both blocks come out big, the blocks may not fit. A <b>tolerance stack-up</b> adds the sizes and their tolerances along a path, called the <b>loop</b>, to find the smallest and largest value of one result, usually a <b>gap</b>. You then compare it with what the design needs.</p>
+          <div class="callout" style="margin-top:10px"><b>The one rule to remember.</b> Walk from one side of the gap, through the parts, to the other side. A size you walk forward along (in the direction you chose as +) adds. A size you walk back along subtracts. The gap is the sum.</div></div>
+        <div class="adslot" data-slot="inArticle"></div><div class="panel"><div class="ph"><h2>Words used in stack-ups</h2></div>
+          <dl class="bdl" style="grid-template-columns:190px minmax(0,1fr)">
+            <dt>Loop</dt><dd>The path of sizes from one side of the gap to the other. Every size you cross is one row in the calculator.</dd>
+            <dt>Contributor</dt><dd>One size in the loop, with its tolerance.</dd>
+            <dt>Direction</dt><dd>+ if the size makes the gap bigger when it grows, − if it makes the gap smaller.</dd>
+            <dt>Sensitivity</dt><dd>How much the gap moves when the size moves 1 mm. It is 1 for sizes in line with the gap, and the cosine of the angle for sizes at an angle.</dd>
+            <dt>Worst case</dt><dd>Every size at its worst limit at the same time. Safe but pessimistic.</dd>
+            <dt>RSS</dt><dd>Root sum of squares. Assumes sizes vary at random and rarely all hit their limits together. Gives a smaller, more realistic spread for many parts.</dd>
+            <dt>Distribution</dt><dd>How sizes spread in production. Normal: most parts near the middle. Uniform: any size in the band is equally likely (tool wear, hand fitting).</dd>
+            <dt>Mean shift</dt><dd>When the process is centred off the middle of the band. Modified RSS adds a safety factor for it.</dd>
+            <dt>Cpk</dt><dd>A capability number. 1.33 or more means the gap stays well inside its limits.</dd>
+          </dl></div>
+        <div class="panel"><div class="ph"><h2>How to do a stack-up, step by step, with the calculator</h2></div>
+          <ol class="gsteps">
+            <li><b>Write down the requirement.</b><span>What is the smallest and largest gap that works? Type them into <b>Gap minimum (LSL)</b> and <b>Gap maximum (USL)</b>. Leave one empty if there is only one limit.</span></li>
+            <li><b>Sketch the loop.</b><span>On paper, draw the parts and an arrow for every size from one side of the gap to the other. Pick one direction as +, usually left to right.</span></li>
+            <li><b>Add one row per size.</b><span>Press <b>Add dimension</b>. Give it a name you will recognise, such as "Pocket width". Remove a row with ×.</span></li>
+            <li><b>Enter the nominal.</b><span>The size from the drawing, without the tolerance.</span></li>
+            <li><b>Enter + tol and − tol.</b><span>Both as positive numbers. For 25 −0.10/0 type + tol 0 and − tol 0.1. Leave both blank to use the general tolerance (ISO 2768) from the charts page, or press <b>Fill blank tolerances from ISO 2768</b> to write those values in.</span></li>
+            <li><b>Set the direction.</b><span><b>+ adds</b> if the gap grows when this size grows, <b>− subtracts</b> if the gap shrinks.</span></li>
+            <li><b>Set the sensitivity.</b><span>Keep 1 for sizes in line with the gap. For a size at angle θ to the gap direction, type cos θ, for example 0.866 for 30°.</span></li>
+            <li><b>Pick the distribution.</b><span>Normal for machined sizes from a stable process. Uniform for sizes that may sit anywhere in the band. This only changes the Monte Carlo result.</span></li>
+            <li><b>Read the results.</b><span>The tiles, the loop drawing, the histogram and the contribution bars are explained below.</span></li>
+            <li><b>Fix the biggest contributor.</b><span>If the gap fails, tighten the size with the longest bar first, or change the design so fewer sizes are in the loop. Fewer contributors is the cheapest fix.</span></li>
+          </ol></div>
+        <div class="panel gex"><div class="ph"><h2>Worked example: two blocks in a pocket</h2><span class="grow"></span><a class="btn primary sm" href="../index.html#tolerance">Open the calculator</a></div>
+          <p class="gl">A pocket <b>50 ±0.10</b> holds block A <b>24.80 ±0.05</b> and block B <b>25.00 −0.10/0</b>. The blocks must slide in, so the gap must be at least <b>0.05</b>, and must not rattle, so at most <b>0.40</b>.</p>
+          <h3 class="ch">Step 1: make every tolerance equal both ways</h3>
+          <p class="gl">Block B is unilateral. Move its nominal to the middle of the band: mean = 25.00 + (0 + (−0.10)) ÷ 2 = <b>24.95</b>, tolerance = (0 − (−0.10)) ÷ 2 = <b>±0.05</b>. So B is 24.95 ±0.05, the same band of 24.90 to 25.00. The calculator does this for you when you type + tol 0 and − tol 0.1.</p>
+          <h3 class="ch">Step 2: the nominal gap</h3>
+          <pre class="calc">Gap = pocket − A − B = 50 − 24.80 − 24.95 = 0.25 mm</pre>
+          <h3 class="ch">Step 3: worst case</h3>
+          <pre class="calc">Worst case = 0.10 + 0.05 + 0.05 = ±0.20 mm
+Gap range  = 0.25 − 0.20 to 0.25 + 0.20 = 0.05 to 0.45 mm</pre>
+          <p class="gl">The smallest gap 0.05 meets the minimum, but the largest gap <b>0.45 is above 0.40</b>. Worst case says the design can fail.</p>
+          <h3 class="ch">Step 4: RSS (statistical)</h3>
+          <pre class="calc">RSS = √(0.10² + 0.05² + 0.05²) = √(0.0100 + 0.0025 + 0.0025) = √0.015 = ±0.1225 mm
+Gap range = 0.25 ± 0.1225 = 0.1275 to 0.3725 mm</pre>
+          <p class="gl">RSS says almost every assembly is fine, because it is unlikely that all three sizes hit their limits together.</p>
+          <h3 class="ch">Step 5: decide and fix</h3>
+          <p class="gl">The pocket gives 0.0100 of the 0.0150 in the RSS sum, which is <b>67 %</b> of the variation, so it is the size to tighten. With the pocket at <b>50 ±0.05</b>, worst case becomes ±0.15 and the gap is <b>0.10 to 0.40</b>, which meets the requirement even at the worst case. Whether you need that depends on volume and risk, see the decision guide below.</p>
+          <p class="gl" style="margin-top:8px">In the calculator, the "Nominal gap" tile shows 0.20 because it uses the sizes as written (block B as 25.00). The worst case and RSS ranges use the real band, so they match the numbers above.</p></div>
+        <div class="panel"><div class="ph"><h2>What every result means</h2></div>
+          <div class="tbl-wrap"><table class="t gtbl"><thead><tr><th>Result</th><th>Meaning</th><th>Use it when</th></tr></thead><tbody>
+            <tr><td><b>Nominal gap</b></td><td>The gap if every size is exactly as written.</td><td>Always look at it first. If it is outside the requirement, the design is wrong before tolerances matter.</td></tr>
+            <tr><td><b>Worst case</b></td><td>Smallest and largest gap if every size is at its worst limit.</td><td>Safety parts, small batches, or three or fewer sizes in the loop. If it passes, every assembly fits.</td></tr>
+            <tr><td><b>RSS</b></td><td>The range where about 99.73 % of assemblies fall, if each size is centred, random and its tolerance is ±3 standard deviations.</td><td>Larger batches with four or more sizes from stable processes.</td></tr>
+            <tr><td><b>Modified RSS (×1.5)</b></td><td>RSS with a 1.5 safety factor for processes that are not centred, never wider than worst case.</td><td>A practical middle ground when you are not sure the process is centred.</td></tr>
+            <tr><td><b>Monte Carlo mean ± 3σ</b></td><td>20 000 virtual assemblies built with random sizes from the chosen distributions.</td><td>Mixed distributions (normal and uniform) or when you want the actual percentage out of spec.</td></tr>
+            <tr><td><b>Out of spec %, Cpk</b></td><td>Share of the virtual assemblies outside your gap limits, and the capability.</td><td>Aim for Cpk 1.33 or more.</td></tr>
+            <tr><td><b>Stack loop drawing</b></td><td>Each size as an arrow from the datum, + to the right, − to the left, and the gap at the bottom.</td><td>Check it matches your paper sketch. A wrong arrow means a wrong direction.</td></tr>
+            <tr><td><b>Histogram</b></td><td>How the Monte Carlo gaps spread. Red bars are outside your limits.</td><td>See how close the spread comes to the limits.</td></tr>
+            <tr><td><b>Contribution bars</b></td><td>Each size's share of the RSS variation.</td><td>Tighten the longest bar first; it gives the biggest improvement.</td></tr>
+          </tbody></table></div></div>
+        <div class="panel"><div class="ph"><h2>Which method to use</h2></div>
+          <div class="cards">
+            <div><b>Use worst case if</b><p>the part is safety critical, the batch is small, there are only two or three sizes in the loop, or a failure is very expensive. It costs more because tolerances must be tighter.</p></div>
+            <div><b>Use RSS if</b><p>you build many assemblies, there are four or more sizes, and the processes are stable and centred. A few out-of-limit assemblies must be acceptable or caught by inspection.</p></div>
+            <div><b>Use modified RSS if</b><p>you want RSS savings but are not sure the processes are centred. It sits between RSS and worst case.</p></div>
+            <div><b>Use Monte Carlo if</b><p>some sizes are uniform or skewed, the loop has angles, or you need the percentage of bad assemblies.</p></div>
+          </div></div>
+        <div class="panel"><div class="ph"><h2>Sizes at an angle (2D stacks)</h2></div>
+          <p class="gl">If a size is not in line with the gap, only part of its change reaches the gap. Multiply by the cosine of the angle between the size and the gap direction and type that as the sensitivity. Example: a 10 ±0.1 mm arm at 30° to the gap has sensitivity cos 30° = <b>0.866</b>, so its tolerance adds ±0.0866 to the gap, not ±0.1. At 90° the sensitivity is 0 and the size does not affect the gap at all.</p></div>
+        <div class="panel"><div class="ph"><h2>GD&amp;T in a stack</h2></div>
+          <p class="gl">A position tolerance Ø<i>t</i> lets a feature move up to <b>±<i>t</i>/2</b> in any direction, so enter it as a row with nominal 0 and ±<i>t</i>/2. Example: a hole with ⌖ Ø0.2 is a row of 0 ±0.1. With Ⓜ, add the bonus the size tolerance allows, because a hole made larger may also sit further off.</p></div>
+        <div class="panel gex"><div class="ph"><h2>Bolted joints: the fastener formulas</h2><span class="grow"></span><a class="btn primary sm" href="../index.html#tolerance">Open the calculator</a></div>
+          <p class="gl">These formulas tell you how much position tolerance each bolt hole may have so the bolts always fit. Enter the <b>clearance hole at MMC</b> (its smallest allowed diameter, H) and the <b>fastener at MMC</b> (the largest bolt diameter, F).</p>
+          <ul class="clist bul" style="margin-top:8px"><li><b>Floating fastener</b>: a bolt and nut through clearance holes in both parts. Each hole may have position tolerance <b>T = H − F</b>.</li><li><b>Fixed fastener</b>: one part is threaded, so the bolt is held in place. The gap is shared by both parts: <b>T = (H − F) ÷ 2</b> each. Add a projected zone Ⓟ to the threaded hole, equal to the thickness of the other part (the optional third field).</li></ul>
+          <pre class="calc">M4 bolt, F = 4.0 mm. Medium clearance hole (ISO 273), H = 4.5 mm.
+Floating: T = 4.5 − 4.0         = Ø0.5 per hole  →  ⌖ Ø0.5 Ⓜ | A | B | C
+Fixed:    T = (4.5 − 4.0) ÷ 2   = Ø0.25 per hole</pre></div>
+        <div class="panel"><div class="ph"><h2>Common mistakes</h2></div>
+          <ul class="clist bul"><li>A wrong direction on one size. Check the loop drawing against your sketch.</li><li>Mixing a unilateral size in without converting it. Type + tol and − tol separately and let the calculator do it.</li><li>Leaving out a size: a washer, a gasket, a coating or plating thickness, or a datum that is not where you think.</li><li>Using RSS for two or three sizes or a small batch. Use worst case.</li><li>Forgetting temperature: a 100 mm aluminium part grows about 0.023 mm for every 10 °C.</li><li>Tightening every tolerance. Tighten only the biggest contributor; the rest cost money and change little.</li></ul></div>
+        <div class="panel"><div class="ph"><h2>Further reading</h2></div>
+          <p class="gl">These sites explain the same methods with their own examples and calculators: the <a href="https://www.engineersedge.com/calculators/tolerance-stackup/Stack-Up-Suite.htm" target="_blank" rel="noopener noreferrer">Engineers Edge Stack-Up Suite</a>, the <a href="https://www.engineersedge.com/calculators/dimensional_tolerance_stackup__16631.htm" target="_blank" rel="noopener noreferrer">Engineers Edge dimensional tolerance stack-up calculator</a>, and the <a href="https://mevirtuoso.com/tolerance-analysis/tolerance-analysis-example-rss-worst-case/" target="_blank" rel="noopener noreferrer">ME Virtuoso tolerance analysis example (RSS and worst case)</a>. The worked example on this page is our own and was checked with the calculator above.</p></div>
+      </div><div class="adslot" data-slot="bottom"></div>
+<div class="panel gex"><div class="ph"><h2>Try it on your own part</h2></div><p class="gl">Upload a STEP model or a PDF drawing to the free DFMA Review Studio tool. Everything runs in your browser; your files are not uploaded.</p><p><a class="btn primary" href="../index.html#tolerance">Open the tool</a></p></div></main><footer class="site-foot"><span>© DFMA Review Studio</span><a href="../guides/index.html">Guides</a><a href="../about.html">About and contact</a><a href="../privacy.html">Privacy policy</a><a href="../terms.html">Terms of use</a><span>Results are a guide only. Check critical values against the standards and your supplier.</span></footer></body></html>
