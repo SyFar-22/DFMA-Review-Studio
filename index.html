@@ -48,7 +48,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:700}
 .bar .grow{flex:1}
 .aipill{display:flex;align-items:center;gap:6px;font-size:13px;padding:5px 10px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);white-space:nowrap}
 .aipill i{width:8px;height:8px;border-radius:50%;background:var(--muted)}
-.aipill[data-s="ready"] i{background:var(--pass)} .aipill[data-s="none"] i{background:var(--warn)}
+.aipill[data-s="ready"] i{background:var(--pass)} .aipill[data-s="none"] i{background:var(--accent)}
 .btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);background:var(--panel);padding:7px 13px;border-radius:var(--r);font-size:14px;white-space:nowrap}
 .btn:hover{border-color:var(--accent);color:var(--accent)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
@@ -2763,15 +2763,31 @@ async function initAI() {
   else AI.mode = store.get('apikey', '') ? 'api' : 'none';
   aiStatus();
 }
-function aiStatus() { const p = $('#aiPill'); p.dataset.s = AI.mode === 'none' ? 'none' : AI.mode === 'checking' ? 'checking' : 'ready'; p.querySelector('span').textContent = AI.mode === 'claude' ? 'AI ready' : AI.mode === 'api' ? 'AI ready (API key)' : AI.mode === 'none' ? 'AI off' : 'Checking AI'; renderAISettings(); }
+function aiStatus() { const p = $('#aiPill'); p.dataset.s = AI.mode === 'none' ? 'none' : AI.mode === 'checking' ? 'checking' : 'ready'; p.querySelector('span').textContent = AI.mode === 'claude' ? 'AI ready' : AI.mode === 'api' ? 'AI ready (API key)' : AI.mode === 'none' ? 'Ask Claude' : 'Checking AI'; renderAISettings(); }
 function renderAISettings() {
   const el = $('#aiSettings'); if (!el) return;
   if (AI.mode === 'claude') el.innerHTML = `<h2 style="font-size:17px;margin-bottom:8px">How the AI engineer works</h2><ul class="howl"><li>Questions go to Claude on your own account. The first question asks your permission.</li><li>Answers are short. If the answer depends on details you have not given, the AI asks a few questions in a form first.</li><li>Sizes from ISO 286, ISO 2768 and the metric thread table are looked up exactly, not from memory.</li><li>Attach photos, drawings, PDF pages, STEP or STL files and text files. CAD files are measured in your browser and summarised for the AI.</li><li>Your DFM, drawing and assembly results are only used when you tick the box under the question.</li><li>The AI can draw simple engineering sketches. They show in the chat and can be saved as SVG.</li></ul><p class="muted" style="font-size:12.5px;margin:8px 0 0">Photo-style images from Gemini or other image services are not available: this page cannot connect to services outside Claude.</p>`;
-  else el.innerHTML = `<h2 style="font-size:17px;margin-bottom:8px">Connect AI</h2><p class="muted" style="margin:0 0 10px">${AI.mode === 'checking' ? 'Checking for AI in this window.' : 'Outside Claude, the desktop app calls Claude with your own Anthropic API key. The key is stored only on this computer.'}</p>
+  else el.innerHTML = `<h2 style="font-size:17px;margin-bottom:8px">Ask Claude</h2>
+    <p class="muted" style="margin:0 0 10px">${AI.mode === 'checking' ? 'Checking for AI in this window.' : AI.mode === 'api' ? 'Answers come straight here, using your own Anthropic API key.' : 'Use your own Claude account. Your question and review summary are copied, and Claude opens in a new tab where you are signed in. Paste with Ctrl+V (Cmd+V on a Mac) and send.'}</p>
+    ${AI.mode === 'api' ? '' : `<ul class="howl" style="margin-bottom:12px"><li>Free with any Claude plan, including the free plan.</li><li>Only text is copied. Attach your PDF drawing or a screenshot of the model in Claude if the question needs it.</li><li>Nothing is sent from this page. You choose what to paste.</li></ul><button class="btn primary" id="openClaude" type="button">Open Claude</button>`}
+    <details style="margin-top:14px"${AI.mode === 'api' ? ' open' : ''}><summary style="cursor:pointer;font-size:13.5px;font-weight:600">Advanced: answer here with an Anthropic API key</summary>
+    <p class="muted" style="font-size:13px;margin:8px 0">For developers. Usage is billed to your API account, not your Claude plan. The key is stored only in this browser.</p>
     <div class="f"><label for="apiKey">Anthropic API key</label><input id="apiKey" type="password" autocomplete="off" placeholder="sk-ant-..." value="${esc(store.get('apikey', ''))}"></div>
     <div class="f" style="margin-top:8px"><label for="apiModel">Model</label><select id="apiModel">${['claude-sonnet-5-5', 'claude-opus-5-5', 'claude-haiku-5-5'].map(m => `<option${store.get('model', 'claude-sonnet-5-5') === m ? ' selected' : ''}>${m}</option>`).join('')}</select></div>
-    <div style="margin-top:10px"><button class="btn primary" id="saveKey" type="button">Save key</button></div>`;
+    <div style="margin-top:10px"><button class="btn" id="saveKey" type="button">${AI.mode === 'api' ? 'Update key' : 'Save key'}</button></div></details>`;
+  const oc = $('#openClaude'); if (oc) oc.onclick = () => { const q = $('#ask').value.trim(); handoff((q ? q + '\n\n' : '') + ($('#useData').checked ? 'Review data from DFMA Review Studio:\n' + context(true) : '')); };
   const sk = $('#saveKey'); if (sk) sk.onclick = () => { store.set('apikey', $('#apiKey').value.trim()); store.set('model', $('#apiModel').value); AI.mode = $('#apiKey').value.trim() ? 'api' : 'none'; aiStatus(); toast(AI.mode === 'api' ? 'Key saved on this computer' : 'Key removed'); };
+}
+// Hand-off to the visitor's own Claude account: copy the prompt, open claude.ai in a new tab.
+// There is no third-party "sign in with Claude", so nothing is sent from this page.
+function handoff(text, note) {
+  const full = (text || '').trim().slice(0, 15000) || 'Hi Claude, I am reviewing a part for manufacture.';
+  window.open('https://claude.ai/new', '_blank', 'noopener');
+  let ok = false; try { const c = document.createElement('textarea'); c.value = full; c.style.position = 'fixed'; c.style.opacity = '0'; document.body.appendChild(c); c.select(); ok = document.execCommand('copy'); c.remove(); } catch (e) {}
+  if (!ok && navigator.clipboard) navigator.clipboard.writeText(full).then(() => {}, () => {});
+  go('ai'); const box = addMsg('ai', `<p><b>Copied for Claude.</b> Claude opens in a new tab (if it does not, use the button below). Paste with Ctrl+V (Cmd+V on a Mac) and send.${note ? ' ' + esc(note) : ''}</p><details><summary style="cursor:pointer;font-size:13px">Show the copied text</summary><pre class="calc" style="max-height:260px;overflow:auto;white-space:pre-wrap">${esc(full)}</pre></details><div style="display:flex;gap:8px;margin-top:8px"><button class="btn sm" type="button" data-recopy>Copy again</button><a class="btn sm" href="https://claude.ai/new" target="_blank" rel="noopener" style="text-decoration:none">Open Claude</a></div>`);
+  const rc = box.querySelector('[data-recopy]'); if (rc) rc.onclick = () => { (navigator.clipboard ? navigator.clipboard.writeText(full) : Promise.reject()).then(() => toast('Copied'), () => toast('Select the text above and copy it')); };
+  toast('Copied. Paste it into Claude', 5000);
 }
 const blobB64 = b => new Promise(r => { const fr = new FileReader(); fr.onload = () => r(String(fr.result).split(',')[1]); fr.readAsDataURL(b); });
 async function aiAsk(input, opt) {
@@ -2917,7 +2933,8 @@ $('#msgs').addEventListener('submit', e => { const fm = e.target.closest('.qform
 $('#msgs').addEventListener('click', e => { const b = e.target.closest('[data-svg]'); if (!b) return; const svg = b.closest('figure').querySelector('svg'); save('drawing.svg', new Blob([new XMLSerializer().serializeToString(svg)], { type: 'image/svg+xml' })); });
 async function send(text, fromForm) {
   const q = (text != null ? text : $('#ask').value).trim(); const files = atts.filter(a => !a.busy); if (!q && !files.length) return;
-  if (AI.mode === 'none' || AI.mode === 'checking') { toast('AI is not connected in this window'); renderAISettings(); return; }
+  if (AI.mode === 'checking') { toast('Checking for AI, try again in a moment'); return; }
+  if (AI.mode === 'none') { if (text == null) $('#ask').value = ''; addMsg('me', esc(q || 'Please look at the attached files.')); handoff('You are a senior manufacturing engineer helping with DFM, DFA, drawings and tolerances. Keep the answer short and practical.\n\nMy question: ' + (q || 'Please look at the attached files.') + (files.length ? '\n\nAttached files (summarised):\n' + files.map(a => a.text).join('\n\n') : '') + ($('#useData').checked ? '\n\nReview data from DFMA Review Studio:\n' + context(true) : ''), files.some(a => a.images && a.images.length) ? 'Pictures are not copied, so attach them in Claude.' : ''); atts = []; renderAtts(); return; }
   if (atts.some(a => a.busy)) { toast('Still reading an attachment'); return; }
   if (text == null) $('#ask').value = '';
   addMsg('me', fromForm ? `<div class="ans">${q.split('\n').map(l => `<div>${esc(l)}</div>`).join('')}</div>` : esc(q || 'Please look at the attached files.') + (files.length ? `<div class="attl">${files.map(a => `<span class="att">${esc(a.name)}</span>`).join('')}</div>` : ''));
@@ -2938,7 +2955,8 @@ function askAbout(f, where) { go('ai'); $('#useData').checked = true; $('#ask').
 // AI DFM ranking in the review column
 $('#aiDfmBtn').onclick = async () => {
   if (!M.ran) { toast('Run a review first'); return; }
-  if (AI.mode === 'none' || AI.mode === 'checking') { go('ai'); toast('Connect AI first'); return; }
+  if (AI.mode === 'none') { handoff(ROLE + '\n\n' + context(true) + '\n\nTask: rank the failing and review items by impact on cost, lead time and risk for this process. For each, give one concrete design change with numbers. Then say in two sentences whether another process would suit this part better. Keep it under 250 words.'); return; }
+  if (AI.mode === 'checking') { toast('Checking for AI, try again in a moment'); return; }
   const out = $('#aiDfmOut'); out.hidden = false; out.innerHTML = '<p class="muted">Thinking…</p>';
   try { const text = await aiAsk(ROLE + '\n\n' + context(true) + '\n\nTask: rank the failing and review items by impact on cost, lead time and risk for this process. For each, give one concrete design change with numbers. Then say in two sentences whether another process from CNC 3-axis, CNC multi-axis, CNC 5-axis, 3D printing or casting would suit this part better. Keep it under 250 words.', { images: V.count ? [await V.shotBlob()] : [], onText: ({ text }) => out.innerHTML = md(text) }); out.innerHTML = md(text); M.aiDfm = text; }
   catch (e) { out.innerHTML = `<p class="muted">${esc(aiErr(e))}</p>`; }
@@ -2947,7 +2965,8 @@ $('#aiDfmBtn').onclick = async () => {
 // AI drawing review
 $('#aiDrwBtn').onclick = async () => {
   if (!D.canvas) { toast('Open a drawing first'); return; }
-  if (AI.mode === 'none' || AI.mode === 'checking') { go('ai'); toast('Connect AI first'); return; }
+  if (AI.mode === 'none') { handoff(ROLE + '\n\nPlease check my engineering drawing before release, like a drawing checker: title block, views, completeness of dimensions, datums and GD&T, tolerances against ISO 2768-' + S.iso + ', threads, notes and manufacturability for ' + PROC[S.process].n + '. List problems as Fail or Review with the fix for each.\n\nRule checks already run on this drawing:\n' + (D.findings.slice(0, 40).map(f => '- ' + LABEL[f.status] + ': ' + f.cat + ': ' + f.title + ' (' + f.value + ')').join('\n') || 'none'), 'Attach your drawing PDF in Claude so it can read it.'); return; }
+  if (AI.mode === 'checking') { toast('Checking for AI, try again in a moment'); return; }
   if (AI.mode === 'claude' && !AI.images) { toast('Images cannot be sent to AI here, so the drawing cannot be read.'); return; }
   const out = $('#aiDrwOut'); out.hidden = false; out.innerHTML = '<p class="muted">Reading the drawing. This takes about a minute.</p>'; $('#aiDrwBtn').disabled = true;
   const prompt = `${ROLE}
