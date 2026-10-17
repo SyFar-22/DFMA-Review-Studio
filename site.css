@@ -381,7 +381,7 @@ table.t tr.hlrow td{outline:0;box-shadow:inset 0 1px 0 var(--accent),inset 0 -1p
 @media (max-width:640px){.bdl{grid-template-columns:minmax(0,1fr)!important;gap:2px 0}.bdl dd{margin-bottom:6px}.cklist li{grid-template-columns:minmax(0,1fr) auto auto auto}.gsteps li{grid-template-columns:28px minmax(0,1fr)}}
 #asmInfo[hidden]{display:none!important}#asmMove{display:flex;gap:6px}#asmMove[hidden]{display:none}
 
-html,body{height:auto}body{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0}
+html,body{height:auto;overflow:visible}body{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;overflow-y:auto!important;overflow-x:hidden}
 .site-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px max(16px,4vw);background:var(--bg);color:var(--ink);border-bottom:1px solid var(--line)}
 .site-top a{color:var(--rail-ink);text-decoration:none;font-size:14px}.site-top a:hover{color:var(--rail-on)}
 .site-top .brand{color:var(--ink);font-weight:600;font-size:17px;letter-spacing:-.02em;margin-right:auto}
