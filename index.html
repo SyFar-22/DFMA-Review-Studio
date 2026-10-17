@@ -447,6 +447,66 @@ h1,h2,h3,.tiles b,.score,.res b,.verdict h2,.report h2{font-family:var(--font-d)
 @media (max-width:1000px){.feat{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:860px){.hero{grid-template-columns:minmax(0,1fr);min-height:660px}.hero-copy{justify-content:flex-start;padding:26px 18px 330px}.hero-ctrl{left:12px;right:12px;bottom:12px;justify-content:space-between}.hero-ctrl .k{display:none}.hero-lbl span:not(.dim),.hero-lbl svg{display:none}.homegrid,.feat{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){.feat button{transition:none}}
+
+/* AI composer with agent picker */
+.composer{border:1px solid var(--line2);border-radius:12px;background:var(--panel);padding:10px 10px 8px;display:flex;flex-direction:column;gap:6px}
+.composer:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 16%,transparent)}
+.composer textarea{border:0;background:transparent;resize:none;min-height:56px;max-height:220px;padding:4px 6px;outline:none;width:100%;color:var(--ink)}
+.cbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cbar .grow{flex:1}
+.btn.icon{width:36px;height:36px;justify-content:center;padding:0}
+.agentpick{position:relative}
+#agentBtn{gap:8px}
+.agentmenu{position:absolute;bottom:calc(100% + 6px);left:0;min-width:240px;background:var(--panel);border:1px solid var(--line2);border-radius:10px;padding:6px;box-shadow:0 18px 40px -14px rgba(0,0,0,.7);z-index:30}
+.agentmenu .mh{font-size:12px;color:var(--muted);padding:6px 10px 4px}
+.agentmenu button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:transparent;padding:8px 10px;border-radius:6px;text-align:left;font-size:14.5px;color:var(--ink)}
+.agentmenu button:hover,.agentmenu button:focus-visible{background:var(--panel2);outline:none}
+.agentmenu button small{color:var(--muted);font-size:12px;margin-left:auto}
+.agentmenu .ck{color:var(--accent);margin-left:6px}
+.agentmenu hr{border:0;border-top:1px solid var(--line);margin:6px 0}
+.ag-ic{width:20px;height:20px;border-radius:5px;display:inline-grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:600;background:var(--panel2);border:1px solid var(--line2);color:var(--ink);flex:none}
+.cnote{font-size:12.5px;color:var(--muted);margin:6px 2px 0}
+
+/* support */
+.hero-bmc{position:absolute;z-index:2;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:8px;background:#ffdd00;color:#0d0d0d;font-weight:600;font-size:14px;text-decoration:none}
+.hero-bmc:hover{filter:brightness(1.05)}
+.support{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:28px}
+.support h2{font-size:24px;margin:6px 0 8px}
+.support p{margin:0;color:var(--muted);max-width:62ch;line-height:1.6}
+.support .cta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 14px}
+.support .btn{text-decoration:none}
+.btn.bmc{background:#ffdd00;border-color:#ffdd00;color:#0d0d0d;font-weight:600}
+.btn.bmc:hover{filter:brightness(1.05);color:#0d0d0d}
+.support .maker{font-size:13.5px}.support .maker a{color:var(--ink)}
+.sup-qr{margin:0;text-align:center}
+.sup-qr .qr{width:180px;height:180px;display:block;border-radius:10px;background:#fff;padding:6px}
+.sup-qr figcaption{font-size:13px;color:var(--ink);margin-top:10px;font-weight:600}.sup-qr figcaption span{font-family:var(--mono);font-size:11.5px;color:var(--muted);font-weight:400}
+@media (max-width:860px){.support{grid-template-columns:minmax(0,1fr);padding:22px}.sup-qr{justify-self:center}.hero-bmc{right:12px;bottom:12px}}
+
+.bmc-img{display:inline-flex;align-items:center;text-decoration:none;border-radius:10px;line-height:0}
+.bmc-img img{height:44px;width:auto;display:block;border-radius:10px}
+.bmc-img span{display:none;align-items:center;gap:8px;padding:11px 16px;border-radius:10px;background:#8ea2ff;color:#000;font-weight:600;font-size:14.5px;line-height:1.2}
+.bmc-img.noimg img{display:none}.bmc-img.noimg span{display:inline-flex}
+.hero-bmc{background:none;padding:0}
+/* reviews */
+.reviews{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:28px}
+.reviews h2{font-size:24px;margin:6px 0 8px}
+.reviews>div>p{margin:0;color:var(--muted);line-height:1.6}
+.rv-avg{display:flex;align-items:baseline;gap:10px;margin:16px 0 6px}.rv-avg b{font-size:40px;font-weight:600;letter-spacing:-.03em}
+.stars-ro{color:#facc15;letter-spacing:2px;font-size:18px}
+.rv-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px;max-height:340px;overflow:auto}
+.rv-list li{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--panel2)}
+.rv-list li p{margin:6px 0 0;color:var(--ink);font-size:14px;line-height:1.5}.rv-list li small{color:var(--muted)}
+.rv-form{display:flex;flex-direction:column;gap:12px}
+.rv-form .f input,.rv-form .f textarea,.rv-form .f select{width:100%}
+.rv-form textarea{min-height:110px;resize:vertical;border:1px solid var(--line2);border-radius:var(--r);background:var(--panel2);padding:10px;color:var(--ink)}
+.star-in{display:flex;gap:4px}
+.star-in button{border:0;background:transparent;font-size:30px;line-height:1;color:var(--line2);padding:2px;cursor:pointer;transition:transform .1s}
+.star-in button.on{color:#facc15}.star-in button:hover{transform:scale(1.12)}
+.rv-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rv-ok{border:1px solid var(--pass);background:var(--pass-bg);color:var(--ink);border-radius:10px;padding:14px}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+@media (max-width:860px){.reviews{grid-template-columns:minmax(0,1fr);padding:22px}.rv-row{grid-template-columns:minmax(0,1fr)}}
 .adslot{text-align:center}.adslot:empty{margin:0}.adslot .lbl{font-size:11px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}.railad{margin:14px auto 0;width:160px;flex:none}.railad .lbl{color:var(--rail-ink)}@media (max-width:860px),(max-height:760px){.railad{display:none!important}}
 </style>
 
@@ -489,6 +549,7 @@ h1,h2,h3,.tiles b,.score,.res b,.verdict h2,.report h2{font-family:var(--font-d)
       <div class="hero" id="heroStage">
         <canvas id="heroCv" aria-label="Cut-away 3D gearbox with a planetary stage and a spur stage. Drag to turn it." role="img"></canvas>
         <div class="hero-lbl" id="heroLbl" aria-hidden="true"></div>
+        <a class="bmc-img hero-bmc" href="https://www.buymeacoffee.com/YZLabs" target="_blank" rel="noopener"><img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20Candy%F0%9F%91%89%F0%9F%91%88&emoji=%F0%9F%8D%AD&slug=YZLabs&button_colour=8ea2ff&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=FFDD00" alt="Buy me a Candy" height="44" onerror="this.parentNode.classList.add('noimg')"><span>🍭 Buy me a Candy</span></a>
         <div class="hero-copy">
           <span class="eyebrow">DFMA Review Studio · DFM · DFA · QC</span>
           <h1>Design it right<br>before you <em>make it.</em></h1>
@@ -527,8 +588,37 @@ h1,h2,h3,.tiles b,.score,.res b,.verdict h2,.report h2{font-family:var(--font-d)
         <button type="button" data-view="roi"><span class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V11M10 20V5M16 20v-6M2 20h20"/></svg></span><b>Cost and ROI</b><span>What one part should cost, including shipping, and what a DFMA programme saves.</span></button>
         <button type="button" data-view="ai"><span class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/></svg></span><b>AI engineer</b><span>Ask about your part, rank the fixes, or get a second opinion on a drawing.</span></button>
       </div>
+      <section class="reviews" id="reviews" aria-labelledby="rvH">
+        <div>
+          <span class="eyebrow">Reviews</span>
+          <h2 id="rvH">Rate DFMA Review Studio</h2>
+          <p>Tell us what worked, what was wrong and what you would like next. Every review is read, and it decides what gets built.</p>
+          <div class="rv-avg" id="rvAvg"></div>
+          <ul class="rv-list" id="rvList"></ul>
+        </div>
+        <form class="rv-form" id="rvForm" novalidate>
+          <div class="f"><label id="rvStarsL">Your rating</label><div class="star-in" id="rvStars" role="radiogroup" aria-labelledby="rvStarsL"><button type="button" role="radio" aria-checked="false" aria-label="1 star" data-star="1">★</button><button type="button" role="radio" aria-checked="false" aria-label="2 stars" data-star="2">★</button><button type="button" role="radio" aria-checked="false" aria-label="3 stars" data-star="3">★</button><button type="button" role="radio" aria-checked="false" aria-label="4 stars" data-star="4">★</button><button type="button" role="radio" aria-checked="false" aria-label="5 stars" data-star="5">★</button></div></div>
+          <div class="rv-row"><div class="f"><label for="rvName">Name (optional)</label><input id="rvName" maxlength="60" autocomplete="name"></div><div class="f"><label for="rvRole">Role (optional)</label><input id="rvRole" maxlength="60" placeholder="Design engineer, student…"></div></div>
+          <div class="f"><label for="rvText">Your review</label><textarea id="rvText" maxlength="2000" placeholder="What did you check, what helped, what should be better?"></textarea></div>
+          <div class="f"><label for="rvMail">Email (optional, only if you want a reply)</label><input id="rvMail" type="email" maxlength="120" autocomplete="email"></div>
+          <label style="font-size:13px;display:flex;gap:8px;align-items:flex-start"><input type="checkbox" id="rvPublic" checked> You may show my rating, review, name and role on this site.</label>
+          <input class="hp" id="rvHp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div><button class="btn primary lg" type="submit" id="rvSend">Send review</button></div>
+          <div id="rvMsg" role="status"></div>
+        </form>
+            <div class="adslot" data-slot="bottom"></div>
+    </section>
+      <section class="support" id="support" aria-labelledby="supH">
+        <div class="sup-copy">
+          <span class="eyebrow">Support this project</span>
+          <h2 id="supH">Keep DFMA Review Studio free</h2>
+          <p>The tool and the guides are free, with no sign-up, and your files never leave your browser. If a check saved you a redesign, a supplier round trip or an hour of drawing review, a small tip helps pay for hosting and new checks.</p>
+          <div class="cta"><a class="bmc-img" href="https://www.buymeacoffee.com/YZLabs" target="_blank" rel="noopener"><img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20Candy%F0%9F%91%89%F0%9F%91%88&emoji=%F0%9F%8D%AD&slug=YZLabs&button_colour=8ea2ff&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=FFDD00" alt="Buy me a Candy" height="44" onerror="this.parentNode.classList.add('noimg')"><span>🍭 Buy me a Candy</span></a><a class="btn lg" href="https://www.linkedin.com/in/shahidfardeen/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 9h3.5v11H4zM5.75 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h3.4v1.6h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45V20h-3.5v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V20H10z"/></svg>Connect on LinkedIn</a></div>
+          <p class="maker">Made by <a href="https://www.linkedin.com/in/shahidfardeen/" target="_blank" rel="noopener">Shahid Fardeen</a> at YZ Labs.</p>
+        </div>
+        <figure class="sup-qr"><svg role="img" aria-label="QR code for buymeacoffee.com/YZLabs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" class="qr"><path fill="#fff" d="M0 0h33v33h-33z"/><path class="qrline" stroke="#09090b" d="M2 2.5h7m1 0h3m1 0h1m2 0h1m1 0h2m1 0h1m1 0h7m-29 1h1m5 0h1m3 0h2m2 0h1m1 0h1m1 0h1m3 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m4 0h2m3 0h1m2 0h1m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m3 0h1m4 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h3m2 0h3m1 0h4m1 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m1 0h1m1 0h1m2 0h1m1 0h1m4 0h1m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-20 1h4m1 0h3m1 0h1m1 0h1m-20 1h7m5 0h2m1 0h2m2 0h1m2 0h2m3 0h1m-28 1h3m1 0h1m1 0h4m1 0h3m2 0h2m1 0h6m2 0h1m-29 1h5m1 0h1m1 0h4m1 0h3m4 0h4m2 0h1m-27 1h2m1 0h3m1 0h1m1 0h1m3 0h2m1 0h1m4 0h2m1 0h2m1 0h1m-27 1h4m1 0h3m1 0h2m3 0h3m1 0h3m1 0h1m2 0h3m-29 1h2m1 0h2m3 0h3m5 0h1m1 0h5m1 0h2m1 0h2m-28 1h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h2m4 0h1m3 0h2m-24 1h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h2m3 0h1m2 0h1m1 0h2m1 0h2m-28 1h1m1 0h1m1 0h2m1 0h1m2 0h2m4 0h1m2 0h1m4 0h2m-27 1h1m3 0h1m4 0h2m3 0h2m2 0h1m1 0h6m1 0h2m-29 1h1m1 0h6m1 0h2m1 0h1m2 0h1m4 0h1m1 0h1m2 0h1m-26 1h1m1 0h1m1 0h2m2 0h3m1 0h1m2 0h1m3 0h2m1 0h2m1 0h1m2 0h1m-29 1h1m1 0h3m1 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h6m1 0h1m1 0h1m-21 1h1m1 0h2m2 0h1m1 0h1m1 0h1m1 0h1m3 0h2m1 0h2m-29 1h7m1 0h1m5 0h7m1 0h1m1 0h1m-25 1h1m5 0h1m1 0h2m3 0h2m3 0h3m3 0h2m2 0h1m-29 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m1 0h1m2 0h7m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h2m4 0h2m3 0h3m1 0h1m1 0h1m-26 1h1m1 0h3m1 0h1m1 0h4m2 0h3m1 0h8m1 0h1m-28 1h1m5 0h1m1 0h2m3 0h2m5 0h1m1 0h1m1 0h1m2 0h1m-28 1h7m3 0h3m1 0h2m1 0h1m6 0h1m1 0h1"/></svg><figcaption>Scan to support<br><span>buymeacoffee.com/YZLabs</span></figcaption></figure>
+      </section>
       <p class="homenote">Your models and drawings are read inside your browser and never uploaded, unless you send a question to the AI engineer.</p>
-          <div class="adslot" data-slot="bottom"></div>
     </section>
     <!-- UPLOAD -->
     <section class="view" id="v-upload" hidden>
@@ -1158,12 +1248,12 @@ Through version: M20×2.5 THRU</pre>
             <button type="button" data-v="top" title="Top view" aria-label="Top view"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="5" width="14" height="14"/><rect x="5" y="5" width="14" height="4" fill="currentColor"/></svg></button>
             <button type="button" data-v="right" title="Right view" aria-label="Right view"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="5" width="14" height="14"/><rect x="15" y="5" width="4" height="14" fill="currentColor"/></svg></button>
             <button type="button" data-v="fit" title="Fit to view" aria-label="Fit to view"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button></div>
-            <div class="grp"><button type="button" data-v="measure" aria-pressed="false" title="Measure between two points" aria-label="Measure"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17L17 3l4 4L7 21z M7 13l2 2M10 10l2 2M13 7l2 2"/></svg></button>
+            <div class="grp"><button type="button" data-v="measure" aria-pressed="false" title="Measure faces, edges and vertices" aria-label="Measure"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17L17 3l4 4L7 21z M7 13l2 2M10 10l2 2M13 7l2 2"/></svg></button>
             <button type="button" data-v="edges" aria-pressed="true" title="Show edges" aria-label="Show edges"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18L12 4l8 14z"/></svg></button>
             <button type="button" data-v="shot" title="Add this view to the assembly report" aria-label="Add view to report"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></button></div></div>
           <div class="asmtop"><label class="chip" id="expCtl" hidden>Explode <input type="range" id="expAmt" min="0" max="100" value="100" aria-label="Explode amount"><select id="expDir" aria-label="Explode direction"><option value="auto">Auto direction</option><option value="x">Along X</option><option value="y">Along Y</option><option value="z">Along Z</option><option value="radial">Outward</option></select></label><span id="asmMove" hidden><button class="btn sm" id="asmUndo" type="button" title="Undo the last move (Ctrl+Z)" disabled>Undo</button><button class="btn sm" id="asmRedo" type="button" title="Redo (Ctrl+Y)" disabled>Redo</button><button class="btn sm" id="asmReset" type="button" title="Put every moved part back">Reset moved parts</button></span><span class="chip" id="asmInfo"></span></div>
           <span class="mlabel" id="asmLbl" hidden></span>
-          <div class="asmmeas" id="asmMeas" hidden></div>
+          <div class="mpanel" id="asmMeas" hidden><div class="mhead"><b>Measure</b><div class="seg" id="amMode"><button type="button" data-m="auto" aria-pressed="true">Auto</button><button type="button" data-m="point" aria-pressed="false">Point</button><button type="button" data-m="edge" aria-pressed="false">Edge</button><button type="button" data-m="face" aria-pressed="false">Face</button></div><span style="flex:1"></span><button class="btn sm" id="amClear" type="button">Clear</button></div><div class="mout" id="amOut"></div></div>
           <div class="asmleg" id="asmLeg"></div></div>
       </div>
       <div class="panel" id="boltPanel"></div>
@@ -1180,7 +1270,17 @@ Through version: M20×2.5 THRU</pre>
           <div class="aiempty" id="aiEmpty"><h3>What do you need?</h3><p class="muted">A hole tolerance, a fit, a thread depth, a GD&amp;T question, a process choice. Attach a drawing, photo, PDF, CAD or text file if it helps.</p><div class="chips" id="quick"></div></div>
           <div class="msgs" id="msgs"></div>
           <div class="atts" id="atts" hidden></div>
-          <div class="compose"><button class="btn" id="attBtn" type="button" title="Attach images, PDF, CAD or text files" aria-label="Attach files"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 11.5l-8.2 8.2a5 5 0 0 1-7.1-7.1l8.6-8.6a3.4 3.4 0 0 1 4.8 4.8l-8.6 8.6a1.7 1.7 0 0 1-2.4-2.4l7.9-7.9"/></svg></button><input id="attIn" type="file" multiple hidden accept="image/*,.pdf,.txt,.csv,.md,.json,.xml,.dxf,.step,.stp,.iges,.igs,.stl,.nc,.gcode"><textarea id="ask" rows="2" placeholder="Ask a question. Enter to send, Shift+Enter for a new line." aria-label="Your question"></textarea><button class="btn primary" id="send" type="button">Ask</button><button class="btn" id="stop" type="button" hidden>Stop</button></div>
+          <div class="composer">
+            <textarea id="ask" rows="2" placeholder="Ask about a tolerance, a fit, a process or your part. Enter to send, Shift+Enter for a new line." aria-label="Your question"></textarea>
+            <div class="cbar">
+              <button class="btn icon" id="attBtn" type="button" title="Attach images, PDF, CAD or text files" aria-label="Attach files"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 11.5l-8.2 8.2a5 5 0 0 1-7.1-7.1l8.6-8.6a3.4 3.4 0 0 1 4.8 4.8l-8.6 8.6a1.7 1.7 0 0 1-2.4-2.4l7.9-7.9"/></svg></button><input id="attIn" type="file" multiple hidden accept="image/*,.pdf,.txt,.csv,.md,.json,.xml,.dxf,.step,.stp,.iges,.igs,.stl,.nc,.gcode">
+              <div class="agentpick"><button class="btn" id="agentBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="Choose the AI agent"><span class="ag-ic" id="agentIc"></span><span id="agentName"></span><span class="muted" id="agentMode"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></button>
+                <div class="agentmenu" id="agentMenu" role="menu" hidden></div></div>
+              <span class="grow"></span>
+              <button class="btn" id="stop" type="button" hidden>Stop</button><button class="btn primary" id="send" type="button" aria-label="Send">Ask</button>
+            </div>
+          </div>
+          <p class="cnote" id="agentNote"></p>
           <label style="font-size:13px;display:flex;gap:6px;align-items:center"><input type="checkbox" id="useData"> Use my review data (DFM, Drawing QC, DFA) in the answer</label>
         </div>
         <div class="panel" id="aiSettings"></div>
@@ -2460,7 +2560,7 @@ const asm = (() => {
   const target = new THREE.Vector3(); let sph = { r: 100, th: -Math.PI / 4, ph: 0.96 }, diag = 100;
   const PAL = ['#4f7fd6', '#e0884a', '#4fae7a', '#c95a8a', '#8a6fd6', '#d6b84a', '#4ab3c9', '#a3714a', '#7a9a3a', '#d65a5a', '#5a6fa3', '#b38ad6'];
   const color = i => PAL[i % PAL.length];
-  let insts = [], triad = null, drag = null, meas = { pts: [], objs: [] }; const hist = [], fut = []; const snap = () => insts.map(t => t.manual.clone()); const restore = sn => sn.forEach((v, i) => insts[i] && insts[i].manual.copy(v)); const updUR = () => { $('#asmUndo').disabled = !hist.length; $('#asmRedo').disabled = !fut.length; }; const selSet = new Set(); const selCenter = () => { const c = new THREE.Vector3(); selSet.forEach(ti => c.add(insts[ti].center.clone().add(offOf(insts[ti])))); return c.multiplyScalar(1 / (selSet.size || 1)); };
+  let insts = [], triad = null, drag = null, am = { mode: 'auto', sel: [], objs: [], cache: new Map(), at: null, label: '' }; const hist = [], fut = []; const snap = () => insts.map(t => t.manual.clone()); const restore = sn => sn.forEach((v, i) => insts[i] && insts[i].manual.copy(v)); const updUR = () => { $('#asmUndo').disabled = !hist.length; $('#asmRedo').disabled = !fut.length; }; const selSet = new Set(); const selCenter = () => { const c = new THREE.Vector3(); selSet.forEach(ti => c.add(insts[ti].center.clone().add(offOf(insts[ti])))); return c.multiplyScalar(1 / (selSet.size || 1)); };
   function init() {
     if (renderer) return; renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true }); renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
     scene = new THREE.Scene(); cam = new THREE.PerspectiveCamera(32, 1, 0.1, 1e6); cam.up.set(0, 0, 1); scene.add(new THREE.HemisphereLight(0xffffff, 0x8a949b, 0.85)); const k = new THREE.DirectionalLight(0xffffff, 0.75); k.position.set(0.6, 0.8, 1); cam.add(k); scene.add(cam); root = new THREE.Group(); scene.add(root);
@@ -2491,7 +2591,7 @@ const asm = (() => {
   function instOf(i) { return insts.findIndex(t => t.idx.includes(i)); }
   function build() {
     init(); if (built === A.meshes && insts.length === (A.insts || []).length) { apply(); legend(); return; }
-    meshes.forEach(m => { root.remove(m); m.geometry.dispose(); }); meshes = []; built = A.meshes; sel = -1; selSet.clear(); clearMeas(); hist.length = 0; fut.length = 0; updUR();
+    meshes.forEach(m => { root.remove(m); m.geometry.dispose(); }); meshes = []; built = A.meshes; sel = -1; selSet.clear(); am.cache.clear(); clearMeas(); hist.length = 0; fut.length = 0; updUR();
     const box = new THREE.Box3();
     A.meshes.forEach((m, i) => { const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(m.position, 3)); if (m.index) g.setIndex(new THREE.BufferAttribute(m.index, 1)); if (m.normal) g.setAttribute('normal', new THREE.BufferAttribute(m.normal, 3)); else g.computeVertexNormals(); g.computeBoundingBox();
       const mesh = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ color: new THREE.Color(color(i)), roughness: 0.6, metalness: 0.08, side: THREE.DoubleSide })); mesh.userData.i = i;
@@ -2516,13 +2616,15 @@ const asm = (() => {
   function offOf(t) { return mode === 'exploded' ? t.auto.clone().multiplyScalar(amt).add(t.manual) : new THREE.Vector3(); }
   function gcol(i) { const G = A.dfaG; const gi = G ? G.findIndex(g => g.idx.includes(i)) : -1; return color(gi >= 0 ? gi : i); }
   function apply() {
+    if (!triad) return;
     insts.forEach((t, ti) => { const o = offOf(t); t.idx.forEach(i => { const m = meshes[i]; if (!m) return; m.position.copy(o); m.material.color.set(gcol(i));
       const on = sel < 0 || (A.dfaG && A.dfaG[sel] && A.dfaG[sel].idx.includes(i)); m.material.transparent = !on; m.material.opacity = on ? 1 : 0.18; m.material.depthWrite = on;
       const hi = selSet.has(ti) || (sel >= 0 && on); m.material.emissive = new THREE.Color(hi ? css('--hl-sel') : '#000000'); m.material.emissiveIntensity = selSet.has(ti) ? 0.4 : hi ? 0.25 : 0; }); });
     triad.visible = mode === 'exploded' && selSet.size > 0 && tool === 'orbit'; if (triad.visible) { triad.position.copy(selCenter()); sizeTriad(); }
     $('#expCtl').hidden = mode !== 'exploded'; $('#asmMove').hidden = mode !== 'exploded';
-    const info = $('#asmInfo'); info.hidden = tool !== 'measure';
-    info.textContent = tool === 'measure' ? 'Click two points to measure.' : mode === 'exploded' ? (selSet.size > 1 ? `${selSet.size} parts selected: drag an arrow to move them together. Ctrl + click adds or removes a part.` : selSet.size ? `${insts[[...selSet][0]].name}: drag an arrow to move it. Ctrl + click to select more.` : 'Click a part, then drag an arrow to move it. Ctrl + click to select several.') : (insts.length < 2 && mode === 'exploded' ? 'Only one part.' : 'Drag to rotate, right drag to pan, scroll to zoom.');
+    if (am.sel.some(s => { const m = meshes[s.c.i]; return !m || m.position.x !== s.off[0] || m.position.y !== s.off[1] || m.position.z !== s.off[2]; })) clearMeas();
+    $('#asmMeas').hidden = tool !== 'measure'; const info = $('#asmInfo'); info.hidden = tool !== 'measure';
+    if (tool === 'measure') { if (!am.sel.length) info.textContent = 'Measure faces, edges and vertices on any part.'; } else info.textContent = mode === 'exploded' ? (selSet.size > 1 ? `${selSet.size} parts selected: drag an arrow to move them together. Ctrl + click adds or removes a part.` : selSet.size ? `${insts[[...selSet][0]].name}: drag an arrow to move it. Ctrl + click to select more.` : 'Click a part, then drag an arrow to move it. Ctrl + click to select several.') : (insts.length < 2 && mode === 'exploded' ? 'Only one part.' : 'Drag to rotate, right drag to pan, scroll to zoom.');
     need = true;
   }
   function sizeTriad() { if (!triad || !triad.visible) return; const s = sph.r * 0.09; triad.scale.set(s, s, s); need = true; }
@@ -2534,22 +2636,49 @@ const asm = (() => {
     drag.m0.forEach((m0, ti) => { const t = insts[ti]; t.manual.copy(m0).addScaledVector(drag.a, k); t.idx.forEach(i => meshes[i].position.copy(offOf(t))); }); triad.position.copy(selCenter()); need = true;
   }
   function click(e) {
-    const h = ray(e, meshes); if (tool === 'measure') { if (h) addMeas(h.point); return; }
+    const h = ray(e, meshes); if (tool === 'measure') { amClick(e, h); return; }
     if (!h) { if (!(e.ctrlKey || e.metaKey)) { selSet.clear(); select(-1); renderDFA(); } return; } const i = h.object.userData.i; const ti = instOf(i);
     if (e.ctrlKey || e.metaKey) { if (selSet.has(ti)) selSet.delete(ti); else selSet.add(ti); sel = -1; apply(); return; }
     selSet.clear(); selSet.add(ti); const gi = A.dfaG ? A.dfaG.findIndex(g => g.idx.includes(i)) : -1; sel = -1; select(gi, true); renderDFA();
   }
   function select(gi, keep) { sel = keep ? gi : (sel === gi ? -1 : gi); if (!keep) selSet.clear(); apply(); }
-  // measure: two points, distance and dX dY dZ
-  function clearMeas() { meas.objs.forEach(o => scene && scene.remove(o)); meas = { pts: [], objs: [] }; $('#asmMeas').hidden = true; $('#asmLbl').hidden = true; need = true; }
-  function addMeas(p) {
-    if (meas.pts.length >= 2) clearMeas(); meas.pts.push(p.clone());
-    const dot = new THREE.Mesh(new THREE.SphereGeometry(diag * 0.006, 12, 8), new THREE.MeshBasicMaterial({ color: 0xd23a2a, depthTest: false })); dot.renderOrder = 11; dot.position.copy(p); scene.add(dot); meas.objs.push(dot);
-    if (meas.pts.length === 2) { const [a, b] = meas.pts; const ln = new THREE.Line(new THREE.BufferGeometry().setFromPoints([a, b]), new THREE.LineBasicMaterial({ color: 0xd23a2a, depthTest: false })); ln.renderOrder = 11; scene.add(ln); meas.objs.push(ln);
-      const d = b.clone().sub(a); $('#asmMeas').hidden = false; $('#asmMeas').innerHTML = `<b>Distance ${fmt(d.length(), 3)} mm</b><span>ΔX ${fmt(Math.abs(d.x), 3)} · ΔY ${fmt(Math.abs(d.y), 3)} · ΔZ ${fmt(Math.abs(d.z), 3)} mm${mode === 'exploded' ? '<br>Measured on the exploded view.' : ''}</span>`; }
+  // measure: faces, edges and vertices of any part, the same way as the part viewer
+  function amCtx(i) { if (am.cache.has(i)) return am.cache.get(i); const p = A.parts[i]; if (!p || !p.topo) return null; const b = measBuild(p.topo); const t = insts[instOf(i)];
+    const c = { T: p.topo, faceTris: b.faceTris, groupOf: b.groupOf, edges: b.edges, mesh: A.meshes[i], stacks: p.stacks, name: (t && t.name) || p.name, i, off: [0, 0, 0] }; am.cache.set(i, c); return c; }
+  const rect = () => canvas.getBoundingClientRect();
+  function proj(p) { const r = rect(); const v = new THREE.Vector3(p[0], p[1], p[2]).project(cam); return [(v.x + 1) / 2 * r.width, (1 - v.y) / 2 * r.height, v.z]; }
+  const rc = new THREE.Raycaster();
+  function vis(p) { const P = new THREE.Vector3(p[0], p[1], p[2]); const d = P.clone().sub(cam.position); const L = d.length(); rc.set(cam.position, d.normalize()); const h = rc.intersectObjects(meshes.filter(m => m.material.opacity >= 1), false)[0]; return !h || h.distance >= L - diag * 0.004; }
+  function amClick(e, h) {
+    const r = rect(), sc = { sx: e.clientX - r.left, sy: e.clientY - r.top }, pad = 20;
+    const srcs = []; meshes.forEach((m, i) => { const bb = m.geometry.boundingBox; if (!bb) return; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+      for (let k = 0; k < 8; k++) { const q = proj([(k & 1 ? bb.max.x : bb.min.x) + m.position.x, (k & 2 ? bb.max.y : bb.min.y) + m.position.y, (k & 4 ? bb.max.z : bb.min.z) + m.position.z]); x0 = Math.min(x0, q[0]); x1 = Math.max(x1, q[0]); y0 = Math.min(y0, q[1]); y1 = Math.max(y1, q[1]); }
+      if (sc.sx < x0 - pad || sc.sx > x1 + pad || sc.sy < y0 - pad || sc.sy > y1 + pad) return; const c = amCtx(i); if (!c) return; c.off = m.position.toArray(); srcs.push(c); });
+    let hi = null; if (h) { const i = h.object.userData.i, c = amCtx(i); if (c) { c.off = meshes[i].position.toArray(); hi = { c, tri: h.faceIndex, at: v3.s(h.point.toArray(), c.off) }; } }
+    const s = measPick(am.mode, hi, sc, srcs, proj, vis);
+    if (!s) { $('#asmInfo').textContent = am.mode === 'edge' ? 'No edge here. Click closer to an edge line.' : 'Click on a part.'; return; }
+    $('#asmInfo').textContent = 'Pick a second item to measure between them.'; if (am.sel.length >= 2) am.sel = []; am.sel.push(s); amRender();
+  }
+  function amDrop() { am.objs.forEach(o => { scene.remove(o); if (o.geometry) o.geometry.dispose(); }); am.objs = []; am.at = null; }
+  function amRender() {
+    if (!scene) return; amDrop(); const v = measView(am.sel, am.mode, true); $('#amOut').innerHTML = v.html; const d = v.draw;
+    const col = new THREE.Color(css('--hl-sel')), pen = new THREE.Color(css('--pen')), add = o => { scene.add(o); am.objs.push(o); };
+    v.faces.forEach(f => { const o = f.s.off, P = f.s.c.mesh.position, I = f.s.c.mesh.index; const arr = new Float32Array(f.tris.length * 9); let n = 0;
+      f.tris.forEach(t => { for (let k = 0; k < 3; k++) { const vi = I ? I[t * 3 + k] : t * 3 + k; arr[n++] = P[vi * 3] + o[0]; arr[n++] = P[vi * 3 + 1] + o[1]; arr[n++] = P[vi * 3 + 2] + o[2]; } });
+      const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(arr, 3)); const m = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.6, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2, depthWrite: false })); m.renderOrder = 9; add(m); });
+    const r = diag * 0.0024, geo = new THREE.CylinderGeometry(r, r, 1, 6), mat = new THREE.MeshBasicMaterial({ color: col, depthTest: false, transparent: true, opacity: 0.95 }), up = new THREE.Vector3(0, 1, 0);
+    (d.edges || []).forEach(pts => { const n = pts.length / 6; if (!n) return; const im = new THREE.InstancedMesh(geo, mat, n); const m4 = new THREE.Matrix4(), q = new THREE.Quaternion();
+      for (let i = 0; i < n; i++) { const a = new THREE.Vector3(pts[i * 6], pts[i * 6 + 1], pts[i * 6 + 2]), b = new THREE.Vector3(pts[i * 6 + 3], pts[i * 6 + 4], pts[i * 6 + 5]); const dd = b.clone().sub(a); const L = dd.length() || 1e-6; q.setFromUnitVectors(up, dd.normalize()); m4.compose(a.clone().add(b).multiplyScalar(0.5), q, new THREE.Vector3(1, L, 1)); im.setMatrixAt(i, m4); }
+      im.renderOrder = 10; add(im); });
+    (d.points || []).forEach(p => { const sp = new THREE.Mesh(new THREE.SphereGeometry(diag * 0.006, 14, 10), new THREE.MeshBasicMaterial({ color: pen, depthTest: false })); sp.position.set(p[0], p[1], p[2]); sp.renderOrder = 11; add(sp); });
+    if (d.line) { const l = new THREE.Line(new THREE.BufferGeometry().setFromPoints(d.line.map(p => new THREE.Vector3(p[0], p[1], p[2]))), new THREE.LineBasicMaterial({ color: pen, depthTest: false })); l.renderOrder = 12; add(l); }
+    if (d.label && d.at) { am.at = new THREE.Vector3(d.at[0], d.at[1], d.at[2]); am.label = d.label + (mode === 'exploded' ? ' (exploded)' : ''); }
     need = true;
   }
-  function labels() { const l = $('#asmLbl'); if (meas.pts.length !== 2) { l.hidden = true; return; } const r = canvas.getBoundingClientRect(); const q = meas.pts[0].clone().add(meas.pts[1]).multiplyScalar(0.5).project(cam); l.hidden = false; l.style.left = ((q.x + 1) / 2 * r.width) + 'px'; l.style.top = ((1 - q.y) / 2 * r.height) + 'px'; l.textContent = fmt(meas.pts[0].distanceTo(meas.pts[1]), 3) + ' mm'; }
+  function clearMeas() { am.sel = []; if (scene) amRender(); }
+  $('#amMode').onclick = e => { const b = e.target.closest('[data-m]'); if (!b) return; am.mode = b.dataset.m; $$('#amMode [data-m]').forEach(x => x.setAttribute('aria-pressed', x.dataset.m === am.mode)); amRender(); };
+  $('#amClear').onclick = () => clearMeas();
+  function labels() { const l = $('#asmLbl'); if (!am.at) { l.hidden = true; return; } const r = rect(); const q = am.at.clone().project(cam); l.hidden = false; l.style.left = ((q.x + 1) / 2 * r.width) + 'px'; l.style.top = ((1 - q.y) / 2 * r.height) + 'px'; l.textContent = am.label; }
   function legend() { const G = A.dfaG; $('#asmLeg').innerHTML = A.meshes.length && G ? G.map((g, gi) => `<span data-g="${gi}"><i style="background:${color(gi)}"></i>${esc(g.name)}${g.count > 1 ? ' ×' + g.count : ''}</span>`).join('') : ''; }
   $('#asmLeg').onclick = e => { const s = e.target.closest('[data-g]'); if (s) { select(+s.dataset.g); renderDFA(); } };
   $('#asmTabs').onclick = e => { const b = e.target.closest('[data-t]'); if (!b) return; mode = b.dataset.t === 'exploded' ? 'exploded' : 'exact'; $$('#asmTabs [data-t]').forEach(x => x.setAttribute('aria-pressed', x === b)); apply(); fit(); };
@@ -2763,13 +2892,13 @@ async function initAI() {
   else AI.mode = store.get('apikey', '') ? 'api' : 'none';
   aiStatus();
 }
-function aiStatus() { const p = $('#aiPill'); p.dataset.s = AI.mode === 'none' ? 'none' : AI.mode === 'checking' ? 'checking' : 'ready'; p.querySelector('span').textContent = AI.mode === 'claude' ? 'AI ready' : AI.mode === 'api' ? 'AI ready (API key)' : AI.mode === 'none' ? 'Ask Claude' : 'Checking AI'; renderAISettings(); }
+function aiStatus() { renderAgent(); const p = $('#aiPill'); p.dataset.s = AI.mode === 'none' ? 'none' : AI.mode === 'checking' ? 'checking' : 'ready'; p.querySelector('span').textContent = AI.mode === 'claude' ? 'AI ready' : AI.mode === 'api' ? 'AI ready (API key)' : AI.mode === 'none' ? 'Ask ' + AGENT.n : 'Checking AI'; renderAISettings(); }
 function renderAISettings() {
   const el = $('#aiSettings'); if (!el) return;
   if (AI.mode === 'claude') el.innerHTML = `<h2 style="font-size:17px;margin-bottom:8px">How the AI engineer works</h2><ul class="howl"><li>Questions go to Claude on your own account. The first question asks your permission.</li><li>Answers are short. If the answer depends on details you have not given, the AI asks a few questions in a form first.</li><li>Sizes from ISO 286, ISO 2768 and the metric thread table are looked up exactly, not from memory.</li><li>Attach photos, drawings, PDF pages, STEP or STL files and text files. CAD files are measured in your browser and summarised for the AI.</li><li>Your DFM, drawing and assembly results are only used when you tick the box under the question.</li><li>The AI can draw simple engineering sketches. They show in the chat and can be saved as SVG.</li></ul><p class="muted" style="font-size:12.5px;margin:8px 0 0">Photo-style images from Gemini or other image services are not available: this page cannot connect to services outside Claude.</p>`;
-  else el.innerHTML = `<h2 style="font-size:17px;margin-bottom:8px">Ask Claude</h2>
-    <p class="muted" style="margin:0 0 10px">${AI.mode === 'checking' ? 'Checking for AI in this window.' : AI.mode === 'api' ? 'Answers come straight here, using your own Anthropic API key.' : 'Use your own Claude account. Your question and review summary are copied, and Claude opens in a new tab where you are signed in. Paste with Ctrl+V (Cmd+V on a Mac) and send.'}</p>
-    ${AI.mode === 'api' ? '' : `<ul class="howl" style="margin-bottom:12px"><li>Free with any Claude plan, including the free plan.</li><li>Only text is copied. Attach your PDF drawing or a screenshot of the model in Claude if the question needs it.</li><li>Nothing is sent from this page. You choose what to paste.</li></ul><button class="btn primary" id="openClaude" type="button">Open Claude</button>`}
+  else el.innerHTML = `<h2 style="font-size:17px;margin-bottom:8px">Ask ${esc(AGENT.n)}</h2>
+    <p class="muted" style="margin:0 0 10px">${AI.mode === 'checking' ? 'Checking for AI in this window.' : AI.mode === 'api' ? 'Answers come straight here, using your own Anthropic API key.' : `Use your own ${esc(AGENT.n)} account. Your question and review summary are copied, and ${esc(AGENT.n)} opens in a new tab where you are signed in. Paste with Ctrl+V (Cmd+V on a Mac) and send. Switch agent with the picker under the question box.`}</p>
+    ${AI.mode === 'api' ? '' : `<ul class="howl" style="margin-bottom:12px"><li>Works with the free plan of each agent.</li><li>Only text is copied. Attach your PDF drawing or a screenshot of the model there if the question needs it.</li><li>Nothing is sent from this page. You choose what to paste.</li></ul><button class="btn primary" id="openClaude" type="button">Open ${esc(AGENT.n)}</button>`}
     <details style="margin-top:14px"${AI.mode === 'api' ? ' open' : ''}><summary style="cursor:pointer;font-size:13.5px;font-weight:600">Advanced: answer here with an Anthropic API key</summary>
     <p class="muted" style="font-size:13px;margin:8px 0">For developers. Usage is billed to your API account, not your Claude plan. The key is stored only in this browser.</p>
     <div class="f"><label for="apiKey">Anthropic API key</label><input id="apiKey" type="password" autocomplete="off" placeholder="sk-ant-..." value="${esc(store.get('apikey', ''))}"></div>
@@ -2778,16 +2907,42 @@ function renderAISettings() {
   const oc = $('#openClaude'); if (oc) oc.onclick = () => { const q = $('#ask').value.trim(); handoff((q ? q + '\n\n' : '') + ($('#useData').checked ? 'Review data from DFMA Review Studio:\n' + context(true) : '')); };
   const sk = $('#saveKey'); if (sk) sk.onclick = () => { store.set('apikey', $('#apiKey').value.trim()); store.set('model', $('#apiModel').value); AI.mode = $('#apiKey').value.trim() ? 'api' : 'none'; aiStatus(); toast(AI.mode === 'api' ? 'Key saved on this computer' : 'Key removed'); };
 }
-// Hand-off to the visitor's own Claude account: copy the prompt, open claude.ai in a new tab.
-// There is no third-party "sign in with Claude", so nothing is sent from this page.
+// Agents. Claude answers here when this page has AI (inside Claude, or with an API key).
+// Every other choice is a hand-off: the prompt is copied and the agent's own chat opens in a new tab,
+// signed in with the visitor's own account. No outside site offers a "sign in" for this, so nothing is sent from here.
+const AGENTS = [
+  { id: 'claude', n: 'Claude', ic: 'C', url: 'https://claude.ai/new' },
+  { id: 'chatgpt', n: 'ChatGPT', ic: 'G', url: 'https://chatgpt.com/' },
+  { id: 'gemini', n: 'Google Gemini', ic: 'Gm', url: 'https://gemini.google.com/app' },
+  { id: 'copilot', n: 'Microsoft Copilot', ic: 'Co', url: 'https://copilot.microsoft.com/' },
+  { id: 'perplexity', n: 'Perplexity', ic: 'P', url: 'https://www.perplexity.ai/' }
+];
+let AGENT = AGENTS.find(a => a.id === store.get('agent', 'claude')) || AGENTS[0];
+function agentInline() { return AGENT.id === 'claude' && (AI.mode === 'claude' || AI.mode === 'api'); }
+function renderAgent() {
+  if (!$('#agentBtn')) return; const inl = agentInline();
+  $('#agentIc').textContent = AGENT.ic; $('#agentName').textContent = AGENT.n; $('#agentMode').textContent = inl ? '(Auto)' : '↗';
+  $('#agentNote').textContent = inl ? (AI.mode === 'claude' ? 'Answers appear here, using your Claude account.' : 'Answers appear here, using your Anthropic API key.') : `Your question is copied and ${AGENT.n} opens in a new tab, signed in with your own account. Paste and send.`;
+  $('#send').textContent = inl ? 'Ask' : 'Ask ↗';
+  $('#agentMenu').innerHTML = '<div class="mh">Agents</div>' + AGENTS.map(a => `<button type="button" role="menuitemradio" aria-checked="${a.id === AGENT.id}" data-agent="${a.id}"><span class="ag-ic">${a.ic}</span>${esc(a.n)}<small>${a.id === 'claude' && (AI.mode === 'claude' || AI.mode === 'api') ? 'here' : 'new tab'}</small>${a.id === AGENT.id ? '<span class="ck">✓</span>' : ''}</button>`).join('') + '<hr><button type="button" role="menuitem" data-agent-cfg>Configure…</button>';
+}
+function agentMenu(open) { const m = $('#agentMenu'), b = $('#agentBtn'); if (!m) return; m.hidden = !open; b.setAttribute('aria-expanded', open); if (open) { const f = m.querySelector('[aria-checked="true"]'); if (f) f.focus(); } }
+document.addEventListener('click', e => {
+  if (e.target.closest('#agentBtn')) { agentMenu($('#agentMenu').hidden); return; }
+  const a = e.target.closest('[data-agent]'); if (a) { AGENT = AGENTS.find(x => x.id === a.dataset.agent) || AGENTS[0]; store.set('agent', AGENT.id); agentMenu(false); renderAgent(); aiStatus(); $('#ask').focus(); return; }
+  if (e.target.closest('[data-agent-cfg]')) { agentMenu(false); const st = $('#aiSettings'); const d = st.querySelector('details'); if (d) d.open = true; st.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+  if (!e.target.closest('#agentMenu')) agentMenu(false);
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#agentMenu') && !$('#agentMenu').hidden) { agentMenu(false); $('#agentBtn').focus(); } });
 function handoff(text, note) {
-  const full = (text || '').trim().slice(0, 15000) || 'Hi Claude, I am reviewing a part for manufacture.';
-  window.open('https://claude.ai/new', '_blank', 'noopener');
+  const ag = AGENT.id === 'claude' || !agentInline() ? AGENT : AGENTS[0];
+  const full = (text || '').trim().slice(0, 15000) || 'Hi, I am reviewing a part for manufacture.';
+  window.open(ag.url, '_blank', 'noopener');
   let ok = false; try { const c = document.createElement('textarea'); c.value = full; c.style.position = 'fixed'; c.style.opacity = '0'; document.body.appendChild(c); c.select(); ok = document.execCommand('copy'); c.remove(); } catch (e) {}
   if (!ok && navigator.clipboard) navigator.clipboard.writeText(full).then(() => {}, () => {});
-  go('ai'); const box = addMsg('ai', `<p><b>Copied for Claude.</b> Claude opens in a new tab (if it does not, use the button below). Paste with Ctrl+V (Cmd+V on a Mac) and send.${note ? ' ' + esc(note) : ''}</p><details><summary style="cursor:pointer;font-size:13px">Show the copied text</summary><pre class="calc" style="max-height:260px;overflow:auto;white-space:pre-wrap">${esc(full)}</pre></details><div style="display:flex;gap:8px;margin-top:8px"><button class="btn sm" type="button" data-recopy>Copy again</button><a class="btn sm" href="https://claude.ai/new" target="_blank" rel="noopener" style="text-decoration:none">Open Claude</a></div>`);
+  go('ai'); const box = addMsg('ai', `<p><b>Copied for ${esc(ag.n)}.</b> ${esc(ag.n)} opens in a new tab (if it does not, use the button below). Paste with Ctrl+V (Cmd+V on a Mac) and send.${note ? ' ' + esc(note) : ''}</p><details><summary style="cursor:pointer;font-size:13px">Show the copied text</summary><pre class="calc" style="max-height:260px;overflow:auto;white-space:pre-wrap">${esc(full)}</pre></details><div style="display:flex;gap:8px;margin-top:8px"><button class="btn sm" type="button" data-recopy>Copy again</button><a class="btn sm" href="${ag.url}" target="_blank" rel="noopener" style="text-decoration:none">Open ${esc(ag.n)}</a></div>`);
   const rc = box.querySelector('[data-recopy]'); if (rc) rc.onclick = () => { (navigator.clipboard ? navigator.clipboard.writeText(full) : Promise.reject()).then(() => toast('Copied'), () => toast('Select the text above and copy it')); };
-  toast('Copied. Paste it into Claude', 5000);
+  toast(`Copied. Paste it into ${ag.n}`, 5000);
 }
 const blobB64 = b => new Promise(r => { const fr = new FileReader(); fr.onload = () => r(String(fr.result).split(',')[1]); fr.readAsDataURL(b); });
 async function aiAsk(input, opt) {
@@ -2933,8 +3088,8 @@ $('#msgs').addEventListener('submit', e => { const fm = e.target.closest('.qform
 $('#msgs').addEventListener('click', e => { const b = e.target.closest('[data-svg]'); if (!b) return; const svg = b.closest('figure').querySelector('svg'); save('drawing.svg', new Blob([new XMLSerializer().serializeToString(svg)], { type: 'image/svg+xml' })); });
 async function send(text, fromForm) {
   const q = (text != null ? text : $('#ask').value).trim(); const files = atts.filter(a => !a.busy); if (!q && !files.length) return;
-  if (AI.mode === 'checking') { toast('Checking for AI, try again in a moment'); return; }
-  if (AI.mode === 'none') { if (text == null) $('#ask').value = ''; addMsg('me', esc(q || 'Please look at the attached files.')); handoff('You are a senior manufacturing engineer helping with DFM, DFA, drawings and tolerances. Keep the answer short and practical.\n\nMy question: ' + (q || 'Please look at the attached files.') + (files.length ? '\n\nAttached files (summarised):\n' + files.map(a => a.text).join('\n\n') : '') + ($('#useData').checked ? '\n\nReview data from DFMA Review Studio:\n' + context(true) : ''), files.some(a => a.images && a.images.length) ? 'Pictures are not copied, so attach them in Claude.' : ''); atts = []; renderAtts(); return; }
+  if (AI.mode === 'checking' && AGENT.id === 'claude') { toast('Checking for AI, try again in a moment'); return; }
+  if (!agentInline()) { if (text == null) $('#ask').value = ''; addMsg('me', esc(q || 'Please look at the attached files.')); handoff('You are a senior manufacturing engineer helping with DFM, DFA, drawings and tolerances. Keep the answer short and practical.\n\nMy question: ' + (q || 'Please look at the attached files.') + (files.length ? '\n\nAttached files (summarised):\n' + files.map(a => a.text).join('\n\n') : '') + ($('#useData').checked ? '\n\nReview data from DFMA Review Studio:\n' + context(true) : ''), files.some(a => a.images && a.images.length) ? 'Pictures are not copied, so attach them in Claude.' : ''); atts = []; renderAtts(); return; }
   if (atts.some(a => a.busy)) { toast('Still reading an attachment'); return; }
   if (text == null) $('#ask').value = '';
   addMsg('me', fromForm ? `<div class="ans">${q.split('\n').map(l => `<div>${esc(l)}</div>`).join('')}</div>` : esc(q || 'Please look at the attached files.') + (files.length ? `<div class="attl">${files.map(a => `<span class="att">${esc(a.name)}</span>`).join('')}</div>` : ''));
@@ -2955,7 +3110,7 @@ function askAbout(f, where) { go('ai'); $('#useData').checked = true; $('#ask').
 // AI DFM ranking in the review column
 $('#aiDfmBtn').onclick = async () => {
   if (!M.ran) { toast('Run a review first'); return; }
-  if (AI.mode === 'none') { handoff(ROLE + '\n\n' + context(true) + '\n\nTask: rank the failing and review items by impact on cost, lead time and risk for this process. For each, give one concrete design change with numbers. Then say in two sentences whether another process would suit this part better. Keep it under 250 words.'); return; }
+  if (!agentInline()) { handoff(ROLE + '\n\n' + context(true) + '\n\nTask: rank the failing and review items by impact on cost, lead time and risk for this process. For each, give one concrete design change with numbers. Then say in two sentences whether another process would suit this part better. Keep it under 250 words.'); return; }
   if (AI.mode === 'checking') { toast('Checking for AI, try again in a moment'); return; }
   const out = $('#aiDfmOut'); out.hidden = false; out.innerHTML = '<p class="muted">Thinking…</p>';
   try { const text = await aiAsk(ROLE + '\n\n' + context(true) + '\n\nTask: rank the failing and review items by impact on cost, lead time and risk for this process. For each, give one concrete design change with numbers. Then say in two sentences whether another process from CNC 3-axis, CNC multi-axis, CNC 5-axis, 3D printing or casting would suit this part better. Keep it under 250 words.', { images: V.count ? [await V.shotBlob()] : [], onText: ({ text }) => out.innerHTML = md(text) }); out.innerHTML = md(text); M.aiDfm = text; }
@@ -2965,7 +3120,7 @@ $('#aiDfmBtn').onclick = async () => {
 // AI drawing review
 $('#aiDrwBtn').onclick = async () => {
   if (!D.canvas) { toast('Open a drawing first'); return; }
-  if (AI.mode === 'none') { handoff(ROLE + '\n\nPlease check my engineering drawing before release, like a drawing checker: title block, views, completeness of dimensions, datums and GD&T, tolerances against ISO 2768-' + S.iso + ', threads, notes and manufacturability for ' + PROC[S.process].n + '. List problems as Fail or Review with the fix for each.\n\nRule checks already run on this drawing:\n' + (D.findings.slice(0, 40).map(f => '- ' + LABEL[f.status] + ': ' + f.cat + ': ' + f.title + ' (' + f.value + ')').join('\n') || 'none'), 'Attach your drawing PDF in Claude so it can read it.'); return; }
+  if (!agentInline()) { handoff(ROLE + '\n\nPlease check my engineering drawing before release, like a drawing checker: title block, views, completeness of dimensions, datums and GD&T, tolerances against ISO 2768-' + S.iso + ', threads, notes and manufacturability for ' + PROC[S.process].n + '. List problems as Fail or Review with the fix for each.\n\nRule checks already run on this drawing:\n' + (D.findings.slice(0, 40).map(f => '- ' + LABEL[f.status] + ': ' + f.cat + ': ' + f.title + ' (' + f.value + ')').join('\n') || 'none'), 'Attach your drawing PDF in Claude so it can read it.'); return; }
   if (AI.mode === 'checking') { toast('Checking for AI, try again in a moment'); return; }
   if (AI.mode === 'claude' && !AI.images) { toast('Images cannot be sent to AI here, so the drawing cannot be read.'); return; }
   const out = $('#aiDrwOut'); out.hidden = false; out.innerHTML = '<p class="muted">Reading the drawing. This takes about a minute.</p>'; $('#aiDrwBtn').disabled = true;
@@ -3131,46 +3286,60 @@ v3.n = a => { const l = v3.l(a) || 1; return v3.m(a, 1 / l); };
 const lineD = (c, ax, p) => { const w = v3.s(p, c); return v3.l(v3.s(w, v3.m(ax, v3.d(w, ax)))); };
 const footOn = (c, ax, p) => v3.a(c, v3.m(ax, v3.d(v3.s(p, c), ax)));
 const MS = { on: false, mode: 'auto', sel: [], edges: [], faceTris: null, groupOf: null, tris: null };
-function measPrep() {
-  MS.sel = []; MS.tris = null; MS.edges = []; MS.faceTris = null; V.clearMeasure();
-  const p = M.parts[M.active]; if (!p || !p.topo) { renderMeas(); return; }
-  const T = p.topo, nF = T.faces.length; const ft = Array.from({ length: nF }, () => []); for (let t = 0; t < T.faceOf.length; t++) if (ft[T.faceOf[t]]) ft[T.faceOf[t]].push(t); MS.faceTris = ft;
+function measBuild(T) {
+  const nF = T.faces.length; const ft = Array.from({ length: nF }, () => []); for (let t = 0; t < T.faceOf.length; t++) if (ft[T.faceOf[t]]) ft[T.faceOf[t]].push(t);
   const grp = Int32Array.from({ length: nF }, (_, i) => i);
   for (let i = 0; i < nF; i++) { const a = T.faces[i]; if (!a.axis) continue; for (let j = 0; j < i; j++) { const b = T.faces[j]; if (!b.axis || b.type !== a.type || a.concave !== b.concave || Math.abs(a.r - b.r) > Math.max(0.01, a.r * 0.005) || Math.abs(Math.abs(v3.d(a.axis, b.axis)) - 1) > 1e-3) continue; if (lineD(a.center, a.axis, b.center) > Math.max(0.05, a.r * 0.02)) continue; grp[i] = grp[j]; break; } }
-  MS.groupOf = grp;
   const out = [];
   T.edges.forEach(e0 => { const e = Object.assign({}, e0); if (e.kind === 'circle') { const g = out.find(o => o.kind === 'circle' && Math.abs(o.r - e.r) < Math.max(0.005, o.r * 0.003) && Math.abs(Math.abs(v3.d(o.n, e.n)) - 1) < 1e-3 && v3.l(v3.s(o.c, e.c)) < Math.max(0.01, o.r * 0.01)); if (g) { const pts = new Float32Array(g.pts.length + e.pts.length); pts.set(g.pts); pts.set(e.pts, g.pts.length); g.pts = pts; g.len += e.len; return; } } out.push(e); });
   out.forEach(e => { if (e.kind === 'circle') e.arc = Math.min(360, e.len / e.r * 180 / Math.PI); });
-  MS.edges = out; renderMeas();
+  return { faceTris: ft, groupOf: grp, edges: out };
+}
+function measPrep() {
+  MS.sel = []; MS.tris = null; MS.edges = []; MS.faceTris = null; MS.c = null; V.clearMeasure();
+  const p = M.parts[M.active]; if (!p || !p.topo) { renderMeas(); return; }
+  const b = measBuild(p.topo); MS.faceTris = b.faceTris; MS.groupOf = b.groupOf; MS.edges = b.edges;
+  MS.c = { T: p.topo, faceTris: b.faceTris, groupOf: b.groupOf, edges: b.edges, mesh: M.meshes[M.active], stacks: p.stacks, off: [0, 0, 0] };
+  renderMeas();
 }
 $('#mMode').onclick = e => { const b = e.target.closest('[data-m]'); if (!b) return; MS.mode = b.dataset.m; $$('#mMode [data-m]').forEach(x => x.setAttribute('aria-pressed', x.dataset.m === MS.mode)); renderMeas(); };
 $('#mClear').onclick = () => { MS.sel = []; renderMeas(); };
-function edgeNear(sc, px) {
-  if (!sc) return null; const cand = [];
-  MS.edges.forEach(e => { const P = e.pts; for (let i = 0; i < P.length; i += 6) { const a = V.project([P[i], P[i + 1], P[i + 2]]), b = V.project([P[i + 3], P[i + 4], P[i + 5]]); if (a[2] > 1 || b[2] > 1) continue;
+// shared by the part viewer and the assembly viewer. Topology is in part coordinates, c.off moves it to where the part is drawn
+function edgeNear(sc, px, srcs, proj, vis) {
+  if (!sc) return null; srcs = srcs || (MS.c ? [MS.c] : []); proj = proj || V.project; vis = vis || V.visible; const cand = [];
+  srcs.forEach(c => { const o = c.off; c.edges.forEach(e => { const P = e.pts; for (let i = 0; i < P.length; i += 6) { const a = proj([P[i] + o[0], P[i + 1] + o[1], P[i + 2] + o[2]]), b = proj([P[i + 3] + o[0], P[i + 4] + o[1], P[i + 5] + o[2]]); if (a[2] > 1 || b[2] > 1) continue;
     const dx = b[0] - a[0], dy = b[1] - a[1], L2 = dx * dx + dy * dy || 1e-9; let t = ((sc.sx - a[0]) * dx + (sc.sy - a[1]) * dy) / L2; t = Math.max(0, Math.min(1, t)); const d = Math.hypot(a[0] + dx * t - sc.sx, a[1] + dy * t - sc.sy);
-    if (d <= px) cand.push({ e, d, p: [P[i] + (P[i + 3] - P[i]) * t, P[i + 1] + (P[i + 4] - P[i + 1]) * t, P[i + 2] + (P[i + 5] - P[i + 2]) * t] }); } });
-  cand.sort((a, b) => a.d - b.d); for (const c of cand.slice(0, 8)) if (V.visible(c.p)) return c; return null;
+    if (d <= px) cand.push({ c, e, d, p: [P[i] + (P[i + 3] - P[i]) * t, P[i + 1] + (P[i + 4] - P[i + 1]) * t, P[i + 2] + (P[i + 5] - P[i + 2]) * t] }); } }); });
+  cand.sort((a, b) => a.d - b.d); for (const k of cand.slice(0, 8)) if (vis(v3.a(k.p, k.c.off))) return k; return null;
 }
-function triVerts(tri) { const m = M.meshes[M.active]; const I = m.index, P = m.position; return [0, 1, 2].map(k => { const v = I ? I[tri * 3 + k] : tri * 3 + k; return [P[v * 3], P[v * 3 + 1], P[v * 3 + 2]]; }); }
-function facesInGroup(fi) { const g = MS.groupOf[fi]; const out = []; for (let i = 0; i < MS.groupOf.length; i++) if (MS.groupOf[i] === g) out.push(i); return out; }
+function triVerts(tri, c) { const m = (c || MS.c).mesh; const I = m.index, P = m.position; return [0, 1, 2].map(k => { const v = I ? I[tri * 3 + k] : tri * 3 + k; return [P[v * 3], P[v * 3 + 1], P[v * 3 + 2]]; }); }
+function facesInGroup(fi, c) { const G = (c || MS.c).groupOf; const g = G[fi]; const out = []; for (let i = 0; i < G.length; i++) if (G[i] === g) out.push(i); return out; }
+// h = { c, tri, at } with at in part coordinates. Returns a selection in part coordinates
+function measPick(mode, h, sc, srcs, proj, vis) {
+  proj = proj || V.project; let s = null; const near = mode === 'face' ? null : edgeNear(sc, mode === 'edge' ? 16 : 8, srcs, proj, vis);
+  if (mode === 'point') {
+    if (near && near.e.kind === 'circle') s = { kind: 'point', c: near.c, p: near.e.c, label: `Centre of Ø${fmt(2 * near.e.r, 3)}` };
+    else if (h) { let best = null, bd = 12; triVerts(h.tri, h.c).forEach(v => { const q = proj(v3.a(v, h.c.off)); const d = Math.hypot(q[0] - sc.sx, q[1] - sc.sy); if (d < bd) { bd = d; best = v; } }); s = { kind: 'point', c: h.c, p: best || h.at, label: best ? 'Vertex' : 'Point on surface' }; }
+  } else if (near && (mode === 'edge' || mode === 'auto')) s = { kind: 'edge', c: near.c, e: near.e, at: near.p };
+  if (!s && mode !== 'edge' && mode !== 'point' && h) { const fi = h.c.T.faceOf[h.tri]; s = { kind: 'face', c: h.c, fi, faces: facesInGroup(fi, h.c), at: h.at }; }
+  if (s) s.off = s.c.off.slice(); return s;
+}
 function measClick(hit, sc) {
-  const p = M.parts[M.active]; if (!p || !p.topo) return; if (hit && hit.part !== M.active) { pill('Measure works on the active part. Pick it in the Part list.'); return; }
-  let s = null; const near = MS.mode === 'face' ? null : edgeNear(sc, MS.mode === 'edge' ? 16 : 8);
-  if (MS.mode === 'point') {
-    if (near && near.e.kind === 'circle') s = { kind: 'point', p: near.e.c, label: `Centre of Ø${fmt(2 * near.e.r, 3)}` };
-    else if (hit) { const hp = [hit.point.x, hit.point.y, hit.point.z]; let best = null, bd = 12; triVerts(hit.tri).forEach(v => { const q = V.project(v); const d = Math.hypot(q[0] - sc.sx, q[1] - sc.sy); if (d < bd) { bd = d; best = v; } }); s = { kind: 'point', p: best || hp, label: best ? 'Vertex' : 'Point on surface' }; }
-  } else if (near && (MS.mode === 'edge' || MS.mode === 'auto')) s = { kind: 'edge', e: near.e, at: near.p };
-  if (!s && MS.mode !== 'edge' && MS.mode !== 'point' && hit) { const fi = p.topo.faceOf[hit.tri]; s = { kind: 'face', fi, faces: facesInGroup(fi), at: [hit.point.x, hit.point.y, hit.point.z] }; }
+  const p = M.parts[M.active]; if (!p || !p.topo || !MS.c) return; if (hit && hit.part !== M.active) { pill('Measure works on the active part. Pick it in the Part list.'); return; }
+  const s = measPick(MS.mode, hit ? { c: MS.c, tri: hit.tri, at: [hit.point.x, hit.point.y, hit.point.z] } : null, sc);
   if (!s) { pill(MS.mode === 'edge' ? 'No edge here. Click closer to an edge line.' : 'Click on the model.'); return; }
   pill(''); if (MS.sel.length >= 2) MS.sel = []; MS.sel.push(s); renderMeas();
 }
-function faceTrisOf(s) { return s.faces.flatMap(f => MS.faceTris[f]); }
-function facePts(s, max) { const out = []; const tris = faceTrisOf(s); const step = Math.max(1, Math.floor(tris.length / (max || 300))); for (let i = 0; i < tris.length; i += step) triVerts(tris[i]).forEach(v => out.push(v)); return out; }
+function faceTrisOf(s) { return s.faces.flatMap(f => s.c.faceTris[f]); }
+function facePts(s, max) { const out = []; const tris = faceTrisOf(s); const step = Math.max(1, Math.floor(tris.length / (max || 300))); for (let i = 0; i < tris.length; i += step) triVerts(tris[i], s.c).forEach(v => out.push(v)); return out; }
 function edgePts(e) { const out = []; for (let i = 0; i < e.pts.length; i += 3) out.push([e.pts[i], e.pts[i + 1], e.pts[i + 2]]); return out; }
 function axName2(v) { const a = v.map(Math.abs); const i = a.indexOf(Math.max(...a)); return a[i] > 0.9999 ? (v[i] > 0 ? '+' : '−') + 'XYZ'[i] : `(${v.map(x => fmt(x, 3)).join(', ')})`; }
-function prim(s) {
-  const T = M.parts[M.active].topo;
+const isZero = o => !o || (!o[0] && !o[1] && !o[2]);
+function shiftPts(P, o) { if (isZero(o)) return P; const q = new Float32Array(P.length); for (let i = 0; i < P.length; i += 3) { q[i] = P[i] + o[0]; q[i + 1] = P[i + 1] + o[1]; q[i + 2] = P[i + 2] + o[2]; } return q; }
+function prim(s) { const q = primLocal(s), o = s.off; if (isZero(o)) return q; const r = Object.assign({}, q), a = p => v3.a(p, o);
+  ['p', 'p0', 'p1', 'c', 'anchor'].forEach(k => { if (r[k]) r[k] = a(r[k]); }); if (r.pts) r.pts = r.pts.map(a); if (r.t === 'pl') r.d = q.d + v3.d(q.n, o); return r; }
+function primLocal(s) {
+  const T = s.c.T;
   if (s.kind === 'point') return { t: 'pt', p: s.p, anchor: s.p };
   if (s.kind === 'edge') { const e = s.e; if (e.kind === 'line') return { t: 'ln', p0: e.p0, p1: e.p1, dir: e.dir, anchor: v3.m(v3.a(e.p0, e.p1), 0.5) }; if (e.kind === 'circle') return { t: 'ci', c: e.c, n: e.n, r: e.r, anchor: e.c }; return { t: 'set', pts: edgePts(e), anchor: s.at }; }
   const f = T.faces[s.fi];
@@ -3179,12 +3348,12 @@ function prim(s) {
   return { t: 'set', pts: facePts(s, 400), anchor: s.at };
 }
 function describe(s) {
-  const T = M.parts[M.active].topo;
-  if (s.kind === 'point') return [s.label || 'Point', `X ${fmt(s.p[0], 3)}  Y ${fmt(s.p[1], 3)}  Z ${fmt(s.p[2], 3)}`];
+  const T = s.c.T;
+  if (s.kind === 'point') { const w = v3.a(s.p, s.off || [0, 0, 0]); return [s.label || 'Point', `X ${fmt(w[0], 3)}  Y ${fmt(w[1], 3)}  Z ${fmt(w[2], 3)}`]; }
   if (s.kind === 'edge') { const e = s.e; if (e.kind === 'line') return ['Straight edge', `Length ${fmt(e.len, 3)} mm along ${axName2(e.dir)}`]; if (e.kind === 'circle') return [e.arc > 355 ? 'Circular edge' : 'Arc edge', `Ø${fmt(2 * e.r, 3)} (R${fmt(e.r, 3)})${e.arc <= 355 ? ` · ${fmt(e.arc, 1)}°` : ''} · normal ${axName2(e.n)}`]; return ['Curved edge', `Length ${fmt(e.len, 3)} mm`]; }
   const f = T.faces[s.fi]; const area = s.faces.reduce((a, i) => a + T.faces[i].area, 0);
   if (f.type === 'plane') return ['Flat face', `Area ${fmt(area, 2)} mm² · normal ${axName2(f.n)}`];
-  if (f.type === 'cyl') { const pts = facePts(s, 200); const h = pts.map(q => v3.d(q, f.axis)); const L = Math.max(...h) - Math.min(...h); const hole = (M.parts[M.active].stacks || []).find(st => Math.abs(st.d - 2 * f.r) < 0.02 && lineD(f.center, f.axis, st.mid) < 0.05);
+  if (f.type === 'cyl') { const pts = facePts(s, 200); const h = pts.map(q => v3.d(q, f.axis)); const L = Math.max(...h) - Math.min(...h); const hole = (s.c.stacks || []).find(st => Math.abs(st.d - 2 * f.r) < 0.02 && lineD(f.center, f.axis, st.mid) < 0.05);
     return [f.concave ? 'Hole or internal cylinder' : 'Cylinder', `Ø${fmt(2 * f.r, 3)} (R${fmt(f.r, 3)}) · length ${fmt(L, 3)} · axis ${axName2(f.axis)}${hole && hole.thread ? ` · ${hole.thread} ${hole.threadKind === 'tap' ? 'tap drill' : hole.threadKind}` : ''}`]; }
   if (f.type === 'cone') return ['Cone (countersink or chamfer)', `${fmt(2 * f.halfAngle, 1)}° included · axis ${axName2(f.axis)}`];
   return ['Curved face', `Area ${fmt(area, 2)} mm²`];
@@ -3211,16 +3380,22 @@ function relate(A, B) {
     if (!r.length) { let best = Infinity, pa = null, pb = null; P.slice(0, 400).forEach(p => Q.slice(0, 400).forEach(q => { const d = v3.l(v3.s(p, q)); if (d < best) { best = d; pa = p; pb = q; } })); r.push(['Smallest distance (sampled)', fmt(best, 4) + ' mm']); line = [pa, pb]; } }
   return { rows: r, line };
 }
+const MEAS_HINT = { auto: 'Click an edge or a face. Edges are picked when you click close to them.', point: 'Click a vertex or a point. Clicking near a hole edge picks its centre.', edge: 'Click close to an edge line.', face: 'Click a face. Both halves of a hole are picked together.' };
+function measView(sel, mode, names) {
+  const edges = [], points = [], faces = [];
+  sel.forEach(s => { const o = s.off || [0, 0, 0]; if (s.kind === 'face') faces.push({ s, tris: faceTrisOf(s) }); if (s.kind === 'edge') edges.push(shiftPts(s.e.pts, o)); if (s.kind === 'point') points.push(v3.a(s.p, o)); if (s.kind === 'edge' && s.e.kind === 'circle') points.push(v3.a(s.e.c, o)); });
+  let html = '', draw = { edges, points };
+  if (!sel.length) html = `<p class="muted" style="margin:0">${MEAS_HINT[mode]} Pick a second item to measure between them.</p>`;
+  else {
+    html = sel.map((s, i) => { const d = describe(s); return `<div class="msel"><i>${'AB'[i]}</i><span><b>${esc(d[0])}</b>${names && s.c.name ? ` <span class="muted">on ${esc(s.c.name)}</span>` : ''}<br><span class="muted">${esc(d[1])}</span></span></div>`; }).join('');
+    if (sel.length === 2) { const r = relate(prim(sel[0]), prim(sel[1])); html += `<dl>${r.rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`; if (r.line) { draw.line = r.line; draw.at = v3.m(v3.a(r.line[0], r.line[1]), 0.5); draw.label = r.rows[0][1]; draw.points = draw.points.concat(r.line); } }
+  }
+  return { html, draw, faces };
+}
 function renderMeas() {
   const out = $('#mOut'); if (!out) return;
-  MS.tris = new Set(); const edges = [], points = []; MS.sel.forEach(s => { if (s.kind === 'face') faceTrisOf(s).forEach(t => MS.tris.add(t)); if (s.kind === 'edge') edges.push(s.e.pts); if (s.kind === 'point') points.push(s.p); if (s.kind === 'edge' && s.e.kind === 'circle') points.push(s.e.c); });
-  let html = '', draw = { edges, points };
-  if (!MS.sel.length) html = `<p class="muted" style="margin:0">${{ auto: 'Click an edge or a face. Edges are picked when you click close to them.', point: 'Click a vertex or a point. Clicking near a hole edge picks its centre.', edge: 'Click close to an edge line.', face: 'Click a face. Both halves of a hole are picked together.' }[MS.mode]} Pick a second item to measure between them.</p>`;
-  else {
-    html = MS.sel.map((s, i) => { const d = describe(s); return `<div class="msel"><i>${'AB'[i]}</i><span><b>${esc(d[0])}</b><br><span class="muted">${esc(d[1])}</span></span></div>`; }).join('');
-    if (MS.sel.length === 2) { const r = relate(prim(MS.sel[0]), prim(MS.sel[1])); html += `<dl>${r.rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`; if (r.line) { draw.line = r.line; draw.at = v3.m(v3.a(r.line[0], r.line[1]), 0.5); draw.label = r.rows[0][1]; draw.points = draw.points.concat(r.line); } }
-  }
-  out.innerHTML = html; if (MS.on) { V.measDraw(draw); paint(); }
+  const v = measView(MS.sel, MS.mode); MS.tris = new Set(); v.faces.forEach(f => f.tris.forEach(t => MS.tris.add(t)));
+  out.innerHTML = v.html; if (MS.on) { V.measDraw(v.draw); paint(); }
 }
 
 // ---------------- drawing views vs 3D model ----------------
@@ -3399,7 +3574,64 @@ const HOME = (() => {
     stop() { on = false; cancelAnimationFrame(raf); }
   };
 })();
-const h = (location.hash || '').slice(1); go(VIEWS.includes(h) ? h : 'home'); renderMatch();
+
+// ---------------- reviews and rating ----------------
+// No server: reviews are emailed to the owner by FormSubmit. Approved ones are copied into reviews.json, which this page shows.
+const REVIEW_TO = 'shahidfardeen2204@gmail.com';
+(() => {
+  const form = $('#rvForm'); if (!form) return; let stars = 0;
+  const paint = n => $$('#rvStars [data-star]').forEach(b => { const on = +b.dataset.star <= n; b.classList.toggle('on', on); b.setAttribute('aria-checked', +b.dataset.star === n); });
+  $('#rvStars').addEventListener('click', e => { const b = e.target.closest('[data-star]'); if (!b) return; stars = +b.dataset.star; paint(stars); });
+  $('#rvStars').addEventListener('mouseover', e => { const b = e.target.closest('[data-star]'); if (b) paint(+b.dataset.star); });
+  $('#rvStars').addEventListener('mouseleave', () => paint(stars));
+  $('#rvStars').addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { stars = Math.min(5, stars + 1); paint(stars); e.preventDefault(); } if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { stars = Math.max(1, stars - 1); paint(stars); e.preventDefault(); } });
+  const starTxt = n => '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n);
+  const list = arr => {
+    if (!arr.length) { $('#rvAvg').innerHTML = '<span class="muted">No reviews yet. Be the first to rate it.</span>'; $('#rvList').innerHTML = ''; return; }
+    const avg = arr.reduce((t, r) => t + (+r.rating || 0), 0) / arr.length;
+    $('#rvAvg').innerHTML = `<b>${avg.toFixed(1)}</b><span class="stars-ro" aria-label="${avg.toFixed(1)} out of 5">${starTxt(Math.round(avg))}</span><span class="muted">${arr.length} review${arr.length > 1 ? 's' : ''}</span>`;
+    $('#rvList').innerHTML = arr.slice().reverse().map(r => `<li><span class="stars-ro" aria-label="${+r.rating} out of 5">${starTxt(+r.rating || 0)}</span> <small>${esc(r.name || 'Anonymous')}${r.role ? ' · ' + esc(r.role) : ''}${r.date ? ' · ' + esc(r.date) : ''}</small><p>${esc(r.text || '')}</p></li>`).join('');
+  };
+  // live reviews come from the Netlify function; reviews.json is the fallback on other hosts
+  let shown = [];
+  const getJSON = u => fetch(u, { cache: 'no-store' }).then(r => { if (!r.ok || !/json/.test(r.headers.get('content-type') || '')) throw new Error(u); return r.json(); });
+  list([]); getJSON('/api/reviews').then(a => a.slice().reverse()).catch(() => getJSON('./reviews.json')).then(a => { shown = Array.isArray(a) ? a : []; list(shown); }).catch(() => {});
+  form.addEventListener('submit', async e => {
+    e.preventDefault(); const msg = $('#rvMsg'); if ($('#rvHp').value) return;
+    const text = $('#rvText').value.trim();
+    if (!stars) { msg.innerHTML = '<p class="muted">Choose a star rating first.</p>'; $('#rvStars button').focus(); return; }
+    if (text.length < 5) { msg.innerHTML = '<p class="muted">Add a few words about your experience.</p>'; $('#rvText').focus(); return; }
+    const data = { rating: stars + ' / 5', name: $('#rvName').value.trim() || 'Anonymous', role: $('#rvRole').value.trim(), review: text, email: $('#rvMail').value.trim(), show_publicly: $('#rvPublic').checked ? 'yes' : 'no', page: location.href, _subject: `DFMA Review Studio review: ${stars}/5`, _template: 'table', _captcha: 'false' };
+    const btn = $('#rvSend'); btn.disabled = true; btn.textContent = 'Sending…';
+    // 1. save on the site so it shows at once (Netlify function)
+    let saved = null;
+    try {
+      const r = await fetch('/api/reviews', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ rating: stars, name: $('#rvName').value.trim(), role: $('#rvRole').value.trim(), text, public: $('#rvPublic').checked, hp: $('#rvHp').value }) });
+      const j = /json/.test(r.headers.get('content-type') || '') ? await r.json() : {};
+      if (r.status === 429 || r.status === 400) { msg.innerHTML = `<p class="muted">${esc(j.error || 'Please check your review.')}</p>`; btn.disabled = false; btn.textContent = 'Send review'; return; }
+      if (r.ok && j.ok) saved = j;
+    } catch (err) {}
+    // 2. email a copy to the owner (FormSubmit); not needed for the review to show
+    const mail = fetch('https://formsubmit.co/ajax/' + REVIEW_TO, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
+    if (saved) {
+      mail.catch(() => {});
+      if (saved.review) { shown.push(saved.review); list(shown); $('#rvList').scrollTop = 0; }
+      form.innerHTML = `<div class="rv-ok"><b>Thank you for the ${stars}-star review.</b><br>${saved.review ? 'It is now live on this page.' : 'It was sent privately and will not be shown.'}</div>`;
+      return;
+    }
+    try {
+      const r = await mail;
+      const j = await r.json().catch(() => ({})); if (!r.ok || String(j.success) === 'false') throw new Error(j.message || 'Not sent');
+      form.innerHTML = `<div class="rv-ok"><b>Thank you for the ${stars}-star review.</b><br>It has been sent. ${data.show_publicly === 'yes' ? 'Approved reviews appear on this page after the next update.' : 'It will stay private.'}</div>`;
+    } catch (err) {
+      // fallback when the form service cannot be reached: the visitor's own mail app
+      const body = `Rating: ${stars}/5\nName: ${data.name}\nRole: ${data.role}\nShow publicly: ${data.show_publicly}\n\n${text}`;
+      msg.innerHTML = `<p class="muted">The review could not be sent from this page. <a href="mailto:${REVIEW_TO}?subject=${encodeURIComponent(data._subject)}&body=${encodeURIComponent(body)}">Send it by email instead</a>.</p>`;
+      btn.disabled = false; btn.textContent = 'Send review';
+    }
+  });
+})();
+const h = (location.hash || '').slice(1); go(VIEWS.includes(h) ? h : 'home'); if (h === 'support' || h === 'reviews') setTimeout(() => $('#' + h).scrollIntoView({ block: 'start' }), 400); renderMatch();
 })();
 </script>
 

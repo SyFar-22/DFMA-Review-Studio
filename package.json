@@ -1,0 +1,8 @@
+{
+  "name": "dfma-review-studio",
+  "private": true,
+  "description": "Static site plus one Netlify Function for reviews",
+  "dependencies": {
+    "@netlify/blobs": "^11.1.4"
+  }
+}

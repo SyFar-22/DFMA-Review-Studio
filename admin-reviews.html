@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Reviews admin | DFMA Review Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="site.css"><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>.adm{max-width:900px;margin:0 auto;padding:28px 16px 60px;display:flex;flex-direction:column;gap:16px}.adm h1{font-size:26px;margin:0}
+.adm .row{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end}.adm input{min-width:260px}
+.rv{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--panel);display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start}
+.rv.off{opacity:.45}.rv p{margin:6px 0 0}.rv small{color:var(--muted)}.st{color:#facc15}.tag{font-size:11.5px;border:1px solid var(--line2);border-radius:4px;padding:1px 6px;margin-left:6px;color:var(--muted)}</style></head>
+<body><main class="adm">
+<h1>Reviews admin</h1>
+<p class="muted" style="margin:0">Hide spam or unwanted reviews. Hidden reviews disappear from the home page at once and can be shown again. The admin key is the ADMIN_KEY you set in Netlify. It stays in this browser tab only.</p>
+<div class="row"><div class="f"><label for="key">Admin key</label><input id="key" type="password" autocomplete="off"></div><button class="btn primary" id="load" type="button">Load reviews</button></div>
+<div id="out" role="status"></div><div id="list" style="display:flex;flex-direction:column;gap:10px"></div>
+</main>
+<script>
+const $ = s => document.querySelector(s), esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+try { $('#key').value = sessionStorage.getItem('rvkey') || ''; } catch (e) {}
+async function load() {
+  const key = $('#key').value.trim(); if (!key) { $('#out').textContent = 'Enter the admin key.'; return; }
+  try { sessionStorage.setItem('rvkey', key); } catch (e) {}
+  const r = await fetch('/api/reviews?all=1', { headers: { 'x-admin-key': key }, cache: 'no-store' }).catch(() => null);
+  if (!r) { $('#out').textContent = 'Could not reach the reviews function. Is the site deployed on Netlify from GitHub?'; return; }
+  const j = await r.json().catch(() => ({})); if (!r.ok) { $('#out').textContent = j.error || 'Error ' + r.status; return; }
+  $('#out').textContent = `${j.length} review${j.length === 1 ? '' : 's'} (newest first). Average of visible public reviews: ${(() => { const v = j.filter(x => x.public && !x.hidden); return v.length ? (v.reduce((t, x) => t + x.rating, 0) / v.length).toFixed(1) : 'none'; })()}`;
+  $('#list').innerHTML = j.map(x => `<div class="rv${x.hidden ? ' off' : ''}"><div><span class="st">${'★'.repeat(x.rating)}${'☆'.repeat(5 - x.rating)}</span> <b>${esc(x.name)}</b> <small>${esc(x.role || '')} · ${esc(new Date(x.at).toLocaleString())}</small>${x.public ? '' : '<span class="tag">private</span>'}${x.hidden ? '<span class="tag">hidden</span>' : ''}<p>${esc(x.text)}</p></div><button class="btn sm" type="button" data-id="${esc(x.id)}" data-h="${x.hidden ? 0 : 1}">${x.hidden ? 'Show' : 'Hide'}</button></div>`).join('');
+}
+$('#load').onclick = load; $('#key').onkeydown = e => { if (e.key === 'Enter') load(); };
+$('#list').onclick = async e => { const b = e.target.closest('[data-id]'); if (!b) return; b.disabled = true;
+  const r = await fetch('/api/reviews', { method: 'PATCH', headers: { 'content-type': 'application/json', 'x-admin-key': $('#key').value.trim() }, body: JSON.stringify({ id: b.dataset.id, hidden: b.dataset.h === '1' }) });
+  if (!r.ok) { $('#out').textContent = 'Could not update (' + r.status + ').'; b.disabled = false; return; } load(); };
+</script></body></html>

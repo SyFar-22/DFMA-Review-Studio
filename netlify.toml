@@ -1,0 +1,4 @@
+# Netlify settings. The site is plain HTML; the only build step is bundling the reviews function.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
