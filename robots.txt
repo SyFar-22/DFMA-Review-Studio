@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /admin-reviews.html
-Sitemap: https://www.example.com/sitemap.xml
+Sitemap: https://dfmareviewstudio.netlify.app/sitemap.xml

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>DFMA Review Studio: free DFM, DFA, drawing QC and tolerance calculator</title><meta name="description" content="Free online DFM and DFA review: check STEP models for CNC, 3D printing and casting, review drawings against ISO, and calculate ISO 2768, ISO 286 fits, GD&T and tolerance stack-ups. Files stay in your browser.">
-<link rel="canonical" href="https://www.example.com/"><meta property="og:title" content="DFMA Review Studio"><meta property="og:description" content="Free online DFM and DFA review: check STEP models for CNC, 3D printing and casting, review drawings against ISO, and calculate ISO 2768, ISO 286 fits, GD&T and tolerance stack-ups. Files stay in your browser."><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://dfmareviewstudio.netlify.app/"><meta property="og:title" content="DFMA Review Studio"><meta property="og:description" content="Free online DFM and DFA review: check STEP models for CNC, 3D printing and casting, review drawings against ISO, and calculate ISO 2768, ISO 286 fits, GD&T and tolerance stack-ups. Files stay in your browser."><meta property="og:type" content="website"><meta property="og:url" content="https://dfmareviewstudio.netlify.app/"><meta property="og:image" content="https://dfmareviewstudio.netlify.app/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="627"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script src="ads.js" defer></script>
 <style>html,body{margin:0;height:100%}[hidden]{display:none!important}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -337,7 +337,7 @@ table.t tr.hlrow td{outline:0;box-shadow:inset 0 1px 0 var(--accent),inset 0 -1p
 .gsteps{list-style:none;margin:0;padding:0;counter-reset:gs;display:flex;flex-direction:column;gap:12px}.gsteps li{counter-increment:gs;display:grid;grid-template-columns:30px minmax(0,1fr);gap:2px 12px;max-width:90ch}.gsteps li::before{content:counter(gs);grid-row:span 2;width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;display:grid;place-items:center;font-size:14px}.gsteps b{font-size:15px}.gsteps span{color:var(--muted);font-size:14px}.gl{margin:0;max-width:90ch}.guide{display:flex;flex-direction:column;gap:16px}.guide[hidden]{display:none}.gex{border-left:4px solid var(--accent)}
 .asmmeas{position:absolute;right:10px;bottom:10px;z-index:3;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:8px 12px;font-size:13px;display:flex;flex-direction:column;gap:2px;max-width:calc(100% - 20px)}.asmmeas[hidden]{display:none}.asmtop select{border:1px solid var(--line2);border-radius:4px;background:var(--panel);padding:2px 4px;font-size:12.5px}
 .asmtop{position:absolute;top:10px;left:60px;right:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;z-index:2}
-.asmtop .chip{border:1px solid var(--line);background:var(--panel);border-radius:var(--r);padding:6px 9px;font-size:13px;display:flex;gap:6px;align-items:center}
+.asmtop [hidden]{display:none!important}.asmtop .chip{border:1px solid var(--line);background:var(--panel);border-radius:var(--r);padding:6px 9px;font-size:13px;display:flex;gap:6px;align-items:center}
 .asmleg{position:absolute;left:10px;bottom:10px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:8px 10px;font-size:12.5px;display:flex;flex-direction:column;gap:3px;max-height:45%;overflow:auto;z-index:2;max-width:calc(100% - 20px)}
 .asmleg span{display:flex;gap:7px;align-items:center;cursor:pointer}
 .asmleg i{width:12px;height:12px;border-radius:2px;flex:none}
@@ -379,6 +379,26 @@ table.t tr.hlrow td{outline:0;box-shadow:inset 0 1px 0 var(--accent),inset 0 -1p
 .callout b{color:var(--ink)}
 .calc{font-family:var(--mono);font-size:13px;background:var(--panel2);border-radius:6px;padding:10px 12px;white-space:pre-wrap;overflow-x:auto;margin:6px 0 0}
 @media (max-width:1000px){.fitgrid{grid-template-columns:minmax(0,1fr)}}
+.rp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:20px;align-items:start}
+.rp-pic{border:1px solid var(--line);border-radius:var(--r);background:var(--panel2);padding:10px}
+.rp-pic svg{width:100%;height:auto;display:block}
+.rp-pic figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
+.rp .k{stroke:var(--ink);fill:none;stroke-width:1.6}.rp .kf{stroke:var(--ink);fill:var(--panel);stroke-width:1.6}
+.rp .a{stroke:var(--accent);fill:none;stroke-width:2}.rp .af{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.6}
+.rp .m{stroke:var(--muted);fill:none;stroke-width:1}.rp .h{stroke:var(--muted);stroke-width:1;opacity:.55}
+.rp .gf{fill:var(--pass-bg);stroke:var(--pass);stroke-width:1.6}.rp .rf{fill:var(--fail-bg);stroke:var(--fail);stroke-width:1.6}
+.rp text{fill:var(--ink);font-family:var(--mono);font-size:11px}.rp-band text{font-size:12px}.rp text.mu{fill:var(--muted)}.rp text.ac{fill:var(--accent)}.rp text.ok{fill:var(--pass)}.rp text.no{fill:var(--fail)}
+.rp-facts{display:grid;grid-template-columns:150px minmax(0,1fr);gap:5px 12px;margin:0;font-size:13.5px}.rp-facts dt{color:var(--muted)}.rp-facts dd{margin:0}
+.rp-band{margin-top:12px}.rp-band svg{width:100%;height:auto;display:block}
+.rp-in{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}.rp-in input{width:130px;border:1px solid var(--line2);border-radius:var(--r);background:var(--panel);padding:7px 10px;font-family:var(--mono)}
+.rp-v{font-weight:600;font-size:14px;padding:6px 10px;border-radius:6px}.rp-v.ok{background:var(--pass-bg);color:var(--pass)}.rp-v.no{background:var(--fail-bg);color:var(--fail)}
+.rp .pl{stroke:var(--accent);stroke-width:2;fill:none}.rp .plf{fill:var(--accent)}.rp .mi{stroke:var(--warn);stroke-width:2;fill:none}.rp .mif{fill:var(--warn)}.rp .dm{stroke:var(--muted);stroke-width:1;fill:none}.rp .dmf{fill:var(--muted)}.rp text.wn{fill:var(--warn)}
+.gx-head{display:flex;flex-direction:column;gap:6px}.gx-in{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-top:10px}.gx-in label{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:var(--muted)}.gx-in input{width:120px;border:1px solid var(--line2);border-radius:var(--r);background:var(--panel);padding:7px 10px;font-family:var(--mono);color:var(--ink)}.gx-in input.wide{width:240px}
+.gx-res{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:10px}.gx-res div{border:1px solid var(--line);border-radius:var(--r);padding:8px 10px}.gx-res b{display:block;font-size:16px;font-family:var(--mono)}.gx-res span{font-size:12.5px;color:var(--muted)}
+.gx-res div.ok{border-color:var(--pass)}.gx-res div.no{border-color:var(--fail)}
+.rp-steps{margin:10px 0 0;padding-left:18px;font-size:13.5px;display:flex;flex-direction:column;gap:4px}
+@media (max-width:1000px){.rp{grid-template-columns:minmax(0,1fr)}.rp-facts{grid-template-columns:120px minmax(0,1fr)}}
+
 @media (max-width:640px){.bdl{grid-template-columns:minmax(0,1fr)!important;gap:2px 0}.bdl dd{margin-bottom:6px}.cklist li{grid-template-columns:minmax(0,1fr) auto auto auto}.gsteps li{grid-template-columns:28px minmax(0,1fr)}}
 #asmInfo[hidden]{display:none!important}#asmMove{display:flex;gap:6px}#asmMove[hidden]{display:none}
 .linkbtn{background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;cursor:pointer;font:inherit}
@@ -837,7 +857,7 @@ h1,h2,h3,.tiles b,.score,.res b,.verdict h2,.report h2{font-family:var(--font-d)
     <!-- TOLERANCE GUIDE -->
     <section class="view" id="v-tolguide" hidden>
       <div class="vh"><div><h1>Tolerance guide</h1><p>Written for someone who has never used tolerances before. Read Start here first, then the tab for the tool you need. Every example has a Try it button that opens the tool with the same numbers filled in, so you can follow along.</p></div><span class="grow"></span>
-        <div class="tabs" id="guideTabs"><button type="button" data-t="basics" aria-pressed="true">Start here</button><button type="button" data-t="charts" aria-pressed="false">Charts and GD&amp;T</button><button type="button" data-t="stack" aria-pressed="false">Tolerance stack-up</button><button type="button" data-t="fits" aria-pressed="false">Limits and fits</button></div></div>
+        <div class="tabs" id="guideTabs"><button type="button" data-t="basics" aria-pressed="true">Start here</button><button type="button" data-t="real" aria-pressed="false">Measure a real part</button><button type="button" data-t="charts" aria-pressed="false">Charts and GD&amp;T</button><button type="button" data-t="stack" aria-pressed="false">Tolerance stack-up</button><button type="button" data-t="fits" aria-pressed="false">Limits and fits</button></div></div>
 
       <!-- START HERE -->
       <div class="guide" id="g-basics">
@@ -898,6 +918,32 @@ h1,h2,h3,.tiles b,.score,.res b,.verdict h2,.report h2{font-family:var(--font-d)
           </ol></div>
       </div>
 
+      <!-- MEASURE A REAL PART -->
+      <div class="guide" id="g-real" hidden>
+        <div class="panel"><div class="ph"><h2>From the drawing to a real part</h2></div>
+          <p class="gl">A tolerance only matters when someone measures the part. This tab takes five real features, shows the tool on the part, and puts every reading on a number line between the two limits. Type your own reading in any example to see where it lands.</p>
+          <ol class="gsteps" style="margin-top:12px">
+            <li><b>Work out the two limits first.</b><span>Nominal plus the upper deviation, nominal plus the lower deviation. Write them on the print before you pick up a tool.</span></li>
+            <li><b>Pick a tool that reads 10 times finer than the band.</b><span>A band of 0.013 mm needs a tool that reads to about 0.001 mm. This is a common rule of thumb, often called the 10 to 1 rule.</span></li>
+            <li><b>Clean the part and the tool, and let the part cool.</b><span>Sizes are defined at 20 °C. A 100 mm steel part grows about 0.012 mm for every 10 °C, so a warm part fresh off the machine reads big.</span></li>
+            <li><b>Zero the tool and measure in more than one place.</b><span>Three places along the feature and two directions 90° apart. A shaft can be oval or tapered and still give one good reading.</span></li>
+            <li><b>Every reading must be inside the limits.</b><span>The part is good only if the worst reading is inside. Do not average readings to make a part pass.</span></li>
+          </ol></div>
+        <div id="realEx" style="display:flex;flex-direction:column;gap:16px"></div>
+        <div class="panel"><div class="ph"><h2>Which tool for which band</h2></div>
+          <div class="tbl-wrap"><table class="t gtbl"><thead><tr><th>Tool</th><th>Reads to</th><th>Fine for bands of about</th><th>Typical use</th></tr></thead><tbody>
+            <tr><td><b>Steel rule</b></td><td>0.5 mm</td><td>5 mm and wider</td><td>Rough lengths, cut stock</td></tr>
+            <tr><td><b>Digital caliper</b></td><td>0.01 mm</td><td>0.1 mm and wider</td><td>Lengths, steps and holes with a general tolerance. It reads finer than it is accurate, so not for tight sizes.</td></tr>
+            <tr><td><b>Outside micrometer</b></td><td>0.001 mm</td><td>0.01 mm and wider</td><td>Shaft diameters, thicknesses, fits</td></tr>
+            <tr><td><b>Bore gauge</b></td><td>0.001 to 0.002 mm</td><td>0.01 to 0.02 mm and wider</td><td>Bearing seats and H7 bores</td></tr>
+            <tr><td><b>Go and no-go gauge</b></td><td>Pass or fail only</td><td>Any, the gauge is made for one size</td><td>Many parts of the same hole or thread in production</td></tr>
+            <tr><td><b>Dial test indicator</b></td><td>0.002 to 0.01 mm</td><td>0.02 mm and wider</td><td>Flatness, runout, parallelism on a surface plate</td></tr>
+            <tr><td><b>Height gauge</b></td><td>0.01 mm</td><td>0.1 mm and wider</td><td>Step heights and hole centres from a datum face</td></tr>
+            <tr><td><b>CMM</b></td><td>About 0.001 mm</td><td>Tight positions and GD&amp;T</td><td>Hole patterns, true position, profile</td></tr>
+          </tbody></table></div>
+          <p class="sysnote" style="margin-top:10px">The bands are rules of thumb from the 10 to 1 rule. Your quality plan or customer may set a different ratio.</p></div>
+      </div>
+
       <!-- CHARTS AND GD&T -->
       <div class="guide" id="g-charts" hidden>
         <div class="panel"><div class="ph"><h2>When to use it</h2></div>
@@ -952,6 +998,7 @@ h1,h2,h3,.tiles b,.score,.res b,.verdict h2,.report h2{font-family:var(--font-d)
           </ol>
           <p class="gl" style="margin-top:10px">Example: a hole Ø3.6 to Ø3.8 with ⌖ Ø0.2 Ⓜ. MMC is 3.6 and LMC is 3.8. The hole measured <b>3.7</b>, so it is 0.1 bigger than MMC. That 0.1 is the <b>bonus</b>, and the total position tolerance for this part becomes 0.2 + 0.1 = <b>Ø0.3</b>. At the largest hole, 3.8, it would be Ø0.4. The <b>virtual condition</b> is 3.6 − 0.2 = <b>Ø3.4</b>: a gauge pin of 3.4 mm placed at the true position must go into every good hole.</p>
           <p class="gl" style="margin-top:8px">Why this is fair: a bigger hole leaves more room around the bolt, so the hole can sit further from its true position and the parts still go together.</p></div>
+        <div id="exCharts" style="display:flex;flex-direction:column;gap:16px"></div>
       </div>
 
       <!-- STACK-UP -->
@@ -1032,6 +1079,7 @@ Floating: T = 4.5 − 4.0         = Ø0.5 per hole  →  ⌖ Ø0.5 Ⓜ | A | B |
 Fixed:    T = (4.5 − 4.0) ÷ 2   = Ø0.25 per hole</pre></div>
         <div class="panel"><div class="ph"><h2>Common mistakes</h2></div>
           <ul class="clist bul"><li>A wrong direction on one size. Check the loop drawing against your sketch.</li><li>Mixing a unilateral size in without converting it. Type + tol and − tol separately and let the calculator do it.</li><li>Leaving out a size: a washer, a gasket, a coating or plating thickness, or a datum that is not where you think.</li><li>Using RSS for two or three sizes or a small batch. Use worst case.</li><li>Forgetting temperature: a 100 mm aluminium part grows about 0.023 mm for every 10 °C.</li><li>Tightening every tolerance. Tighten only the biggest contributor; the rest cost money and change little.</li></ul></div>
+        <div id="exStack" style="display:flex;flex-direction:column;gap:16px"></div>
         <div class="panel"><div class="ph"><h2>Further reading</h2></div>
           <p class="gl">These sites explain the same methods with their own examples and calculators: the <a href="https://www.engineersedge.com/calculators/tolerance-stackup/Stack-Up-Suite.htm" target="_blank" rel="noopener noreferrer">Engineers Edge Stack-Up Suite</a>, the <a href="https://www.engineersedge.com/calculators/dimensional_tolerance_stackup__16631.htm" target="_blank" rel="noopener noreferrer">Engineers Edge dimensional tolerance stack-up calculator</a>, and the <a href="https://mevirtuoso.com/tolerance-analysis/tolerance-analysis-example-rss-worst-case/" target="_blank" rel="noopener noreferrer">ME Virtuoso tolerance analysis example (RSS and worst case)</a>. The worked example on this page is our own and was checked with the calculator above.</p></div>
       </div>
@@ -1077,6 +1125,7 @@ Fixed:    T = (4.5 − 4.0) ÷ 2   = Ø0.25 per hole</pre></div>
           <p class="gl">A Ø20 ground shaft is bought in <b>h6</b>: 19.987 to 20.000 mm. A bush must slide on it, so choose the sliding fit <b>G7/h6</b>. The bush bore G7 is <b>20.007 to 20.028 mm</b>. The clearance is 20.007 − 20.000 = <b>0.007</b> at the tightest and 20.028 − 19.987 = <b>0.041 mm</b> at the loosest. The shaft stays standard and only the bush is machined to suit.</p></div>
         <div class="panel gex"><div class="ph"><h2>Worked example 3: a dowel pin, using your own limits</h2><span class="grow"></span><button class="btn primary sm" type="button" data-try="own">Try it</button></div>
           <p class="gl">A Ø6 dowel pin is made m6: <b>+0.012 / +0.004</b>. It goes into a reamed H7 hole: <b>+0.012 / 0</b>. In Use your own limits, type nominal 6, hole lower 0, hole upper 0.012, shaft lower 0.004, shaft upper 0.012. The result is a <b>transition fit</b>: from 0.012 mm interference (smallest hole, largest pin) to 0.008 mm clearance (largest hole, smallest pin). The pin locates accurately and is tapped in.</p></div>
+        <div id="exFits" style="display:flex;flex-direction:column;gap:16px"></div>
         <div class="panel"><div class="ph"><h2>Good habits</h2></div>
           <ul class="clist bul"><li>Start from the function (slide, locate, press), then pick the fit from the table, then check the numbers.</li><li>Prefer the preferred fits. Tools, gauges and suppliers are ready for them.</li><li>Keep the hole grade one coarser than the shaft. A precise hole is harder to make than a precise shaft.</li><li>Plating and anodising add thickness. Machine the size before coating so the coated size is inside the limits.</li><li>For press fits, check the stress in thin hubs and how much force the press needs.</li></ul></div>
       </div>
@@ -1566,6 +1615,7 @@ async function loadCAD(buf, name, label) {
     const r = await cadW({ name, buffer: buf }, [buf]); const meshes = r.meshes;
     busy('Recognising features');
     const r2 = await dfmW({ cmd: 'load', meshes });
+    const base = String(name).replace(/\.[^.]+$/, ''); r2.res.forEach((p, i) => { if (!p.name || /open cascade step translator/i.test(p.name)) { p.name = r2.res.length > 1 ? `${base} · body ${i + 1}` : base; if (meshes[i]) meshes[i].name = p.name; } });
     M = { uid: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), step, fileName: name, name: label, meshes, parts: r2.res, active: 0, findings: [], thickness: null, triSev: null, triF: null, sel: null, interf: null, ran: false };
     V.setModel(meshes);
     $('#revPartWrap').hidden = meshes.length < 2;
@@ -2304,7 +2354,276 @@ function bonusHow() {
 
 
 // ---------------- tolerance guide ----------------
-$('#guideTabs').onclick = e => { const b = e.target.closest('[data-t]'); if (!b) return; $$('#guideTabs [data-t]').forEach(x => x.setAttribute('aria-pressed', x === b)); ['basics', 'charts', 'stack', 'fits'].forEach(k => $('#g-' + k).hidden = k !== b.dataset.t); $('#main').scrollTo(0, 0); };
+// ---------------- tolerance guide: measure a real part ----------------
+const REAL = [
+  { id: 'shaft', title: 'Shaft diameter with a micrometer', pic: 'PIC_MIC', part: 'Guide shaft that slides in a housing', draw: 'Ø20 g6', how: 'ISO 286: g6 at 20 mm is −0.007 / −0.020', lo: 19.980, hi: 19.993, nom: 20, res: 0.001, tool: 'Outside micrometer 0 to 25 mm, reads 0.001 mm',
+    reads: [['Left, 0°', 19.986], ['Middle, 90°', 19.988], ['Right, 0°', 19.985]], def: 19.987, big: 'too big. It will be tight in the Ø20 H7 bore or not go in. Regrind or reject.', small: 'too small. It will rattle in the bore. Reject.',
+    steps: ['Clean the anvil and spindle and check zero on the 0 mm setting.', 'Close the spindle with the ratchet, never the thimble, so the force is the same every time.', 'Measure three places along the shaft, turn it 90° and repeat.'] },
+  { id: 'bore', title: 'Bore with a go and no-go gauge', pic: 'PIC_PLUG', part: 'Housing bore for the shaft above', draw: 'Ø20 H7', how: 'ISO 286: H7 at 20 mm is +0.021 / 0', lo: 20.000, hi: 20.021, nom: 20, res: 0.001, tool: 'Plug gauge Ø20 H7, plus a bore gauge that reads 0.001 mm for the numbers',
+    reads: [['Bore gauge, top', 20.008], ['Bore gauge, bottom', 20.012]], def: 20.010, big: 'too big. The NO-GO end would enter. The shaft will be loose.', small: 'too small. The GO end will not enter. Ream or reject.',
+    steps: ['The GO end (20.000) must slide in by its own weight, without force.', 'The NO-GO end (20.021) must stop at the mouth of the bore.', 'For the actual number, set the bore gauge on a ring gauge and read the bore at the top and bottom.'] },
+  { id: 'plate', title: 'Plate length with a caliper', pic: 'PIC_CAL', part: 'Mounting plate, 46 mm long', draw: '46 with no tolerance, title block says ISO 2768-mK', how: 'ISO 2768 class m, over 30 up to 120 mm: ±0.3', lo: 45.7, hi: 46.3, nom: 46, res: 0.01, tool: 'Digital caliper, reads 0.01 mm',
+    reads: [['Top edge', 46.12], ['Bottom edge', 46.10]], def: 46.12, big: 'too long. Face it down or reject.', small: 'too short. Reject.',
+    steps: ['Close the jaws and zero the display.', 'Hold the jaws square to the end faces with light, even pressure.', 'Measure near both edges in case the ends are not square.'] },
+  { id: 'flat', title: 'Flatness of a sealing face with a dial indicator', pic: 'PIC_FLAT', part: 'Cover with an O-ring face', draw: 'Feature control frame ⏥ 0.05 on the sealing face', how: 'All points of the face must lie between two parallel planes 0.05 apart', lo: 0, hi: 0.05, nom: null, res: 0.002, tool: 'Dial test indicator, reads 0.002 mm, on a surface plate', unit: 'total dial movement',
+    reads: [['Highest point', 0.03], ['Lowest point', -0.01]], total: true, def: 0.04, big: 'not flat enough. The O-ring may leak. Lap or skim the face.', small: '',
+    steps: ['Set the part on three adjustable supports, not flat on the plate. Flat on the plate you measure parallelism to the bottom face instead.', 'Adjust the supports until three far corners read the same.', 'Slide the part so the tip covers the whole face. Flatness is the highest reading minus the lowest.'] },
+  { id: 'fit', title: 'Will the shaft fit the bore? Use both readings', pic: 'PIC_FIT', part: 'Shaft Ø20 g6 in bore Ø20 H7, a sliding fit', draw: 'Ø20 H7/g6', how: 'Smallest gap 20.000 − 19.993 = 0.007, largest gap 20.021 − 19.980 = 0.041', lo: 0.007, hi: 0.041, nom: null, res: 0.001, tool: 'The bore and shaft readings from the first two examples', unit: 'gap (bore − shaft)',
+    reads: [['Bore 20.010 − shaft 19.987', 0.023]], def: 0.023, big: 'too loose. Expect play and wear.', small: 'too tight. It may bind or need force.',
+    steps: ['Subtract the shaft reading from the bore reading.', 'If both parts are inside their own limits, the gap is always inside the fit. That is why each part gets its own tolerance.'] },
+];
+const REAL_PICS = { PIC_MIC: `<svg viewBox="0 0 360 240" role="img" aria-label="Outside micrometer measuring the diameter of a shaft, seen from the end">
+<circle class="af" cx="130" cy="110" r="48"/><path class="m" d="M72 110h116M130 52v116" stroke-dasharray="6 4"/>
+<text x="112" y="104" class="ac">Ø20</text><text x="113" y="122" class="ac">g6</text>
+<rect class="kf" x="60" y="98" width="22" height="24"/><rect class="kf" x="178" y="101" width="40" height="18"/>
+<rect class="kf" x="218" y="94" width="60" height="32"/><path class="m" d="M224 110h50M230 110v-6M240 110v-6M250 110v-6M260 110v-6M270 110v-6M235 110v4M245 110v4M255 110v4M265 110v4"/>
+<rect class="kf" x="278" y="88" width="48" height="44" rx="4"/><path class="m" d="M286 88v44M294 88v44M302 88v44M310 88v44M318 88v44"/><rect class="kf" x="326" y="100" width="18" height="20" rx="2"/>
+<path class="k" d="M60 110H44Q30 110 30 124V172Q30 204 62 204H208Q240 204 240 172V126" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="60" y="26">Anvil</text><path class="m" d="M72 30v66"/><text x="176" y="26">Spindle</text><path class="m" d="M196 30v69"/><text x="262" y="26">Thimble</text><path class="m" d="M302 30v56"/>
+<text x="248" y="160" class="ac">19.987</text><text x="248" y="176" class="mu">mm</text>
+<text x="40" y="232" class="mu">End view. Close with the ratchet.</text></svg>`, PIC_PLUG: `<svg viewBox="0 0 360 250" role="img" aria-label="Go and no-go plug gauge entering a bore in a housing, shown in section">
+<defs><pattern id="rpHatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" style="stroke:var(--muted);stroke-width:1.2"/></pattern></defs>
+<rect x="40" y="130" width="80" height="100" class="k" style="fill:url(#rpHatch)"/><rect x="200" y="130" width="80" height="100" class="k" style="fill:url(#rpHatch)"/>
+<path class="m" d="M160 120v118" stroke-dasharray="6 4"/>
+<rect class="rf" x="118" y="22" width="84" height="22" rx="3"/><rect class="kf" x="150" y="44" width="20" height="52"/><rect class="gf" x="122" y="96" width="76" height="76" rx="3"/>
+<text x="214" y="30" class="no">NO-GO end</text><text x="214" y="46" class="mu">20.021, must not enter</text>
+<text x="214" y="100" class="ok">GO end</text><text x="214" y="116" class="mu">20.000, must enter</text>
+<text x="44" y="246" class="mu">Housing in section, bore Ø20 H7</text></svg>`, PIC_CAL: `<svg viewBox="0 0 360 230" role="img" aria-label="Digital caliper measuring the length of a plate">
+<rect class="af" x="90" y="120" width="180" height="70" rx="2"/><circle class="k" cx="125" cy="155" r="10"/><circle class="k" cx="235" cy="155" r="10"/>
+<rect class="kf" x="16" y="62" width="330" height="22"/><path class="m" d="M100 84v-8M110 84v-5M120 84v-5M130 84v-5M140 84v-5M150 84v-8M160 84v-5M170 84v-5M180 84v-5M190 84v-5M200 84v-8M210 84v-5M220 84v-5M230 84v-5M240 84v-5"/>
+<path class="kf" d="M66 84H90V150L78 162H66Z"/><path class="kf" d="M270 84H294V162H282L270 150Z"/>
+<rect class="kf" x="258" y="40" width="88" height="54" rx="5"/><rect x="268" y="48" width="68" height="24" rx="2" fill="var(--bg)" class="k"/><text x="276" y="65" class="ac">46.12</text><text x="270" y="87" class="mu">mm</text>
+<path class="m" d="M90 206H270M90 200v12M270 200v12"/><text x="132" y="222" class="mu">46, general tol. ISO 2768-m</text>
+<text x="20" y="30" class="mu">Jaws square to the part,</text><text x="20" y="46" class="mu">light even pressure</text></svg>`, PIC_FLAT: `<svg viewBox="0 0 360 240" role="img" aria-label="Dial test indicator sweeping the top face of a part set on three adjustable supports on a surface plate">
+<rect class="kf" x="10" y="206" width="340" height="22"/><text x="18" y="221" class="mu">Surface plate</text>
+<path class="kf" d="M82 206l8-20h12l8 20Z"/><path class="kf" d="M152 206l8-20h12l8 20Z"/><path class="kf" d="M222 206l8-20h12l8 20Z"/>
+<rect class="af" x="56" y="140" width="210" height="46"/><path class="a" d="M56 140H266" stroke-width="4"/><text x="70" y="168" class="ac">Sealing face, flatness 0.05</text>
+<rect class="kf" x="282" y="186" width="62" height="20"/><rect class="kf" x="308" y="34" width="10" height="152"/><rect class="kf" x="176" y="48" width="142" height="8"/>
+<circle class="kf" cx="176" cy="88" r="30"/><circle class="m" cx="176" cy="88" r="24"/><path class="a" d="M176 88L192 70"/><circle cx="176" cy="88" r="3" fill="var(--accent)"/>
+<path class="k" d="M176 118V140" stroke-width="3"/><circle cx="176" cy="140" r="3" fill="var(--ink)"/>
+<path class="m" d="M60 124H150M60 124l8-5M60 124l8 5M150 124l-8-5M150 124l-8 5"/><text x="70" y="118" class="mu">slide part</text>
+<text x="20" y="20" class="mu">Part on 3 supports, levelled first</text></svg>`, PIC_FIT: `<svg viewBox="0 0 360 220" role="img" aria-label="Shaft inside a bore with the clearance gap exaggerated">
+<circle class="kf" cx="120" cy="110" r="78"/><circle class="af" cx="120" cy="110" r="64" fill-opacity="1"/><circle class="m" cx="120" cy="110" r="70" stroke-dasharray="3 3"/>
+<path class="m" d="M120 110H184" /><text x="102" y="150" class="ac">shaft</text><text x="104" y="22" class="mu">bore</text>
+<path class="a" d="M184 110H198" stroke-width="3"/><text x="214" y="96">gap = bore − shaft</text><text x="214" y="116" class="mu">gap drawn much larger</text>
+<text x="214" y="146" class="ok">20.010 − 19.987</text><text x="214" y="162" class="ok">= 0.023 mm</text></svg>` };
+const fx = (v, d) => (+v).toFixed(d);
+const rdp = x => Math.max(2, -Math.floor(Math.log10(x) + 1e-9));
+function realBand(e, mine) {
+  const W = 560, H = 104, L = 30, R = W - 30, span = e.hi - e.lo, pad = span * 0.7, a = e.lo - pad, b = e.hi + pad, X = v => L + (Math.min(b, Math.max(a, v)) - a) / (b - a) * (R - L), d = rdp(e.res);
+  const vals = e.reads.map(r => [r[0], e.total ? null : r[1]]).filter(r => r[1] != null); if (mine != null && isFinite(mine)) vals.push(['Yours', mine]);
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Number line from ${fx(e.lo, d)} to ${fx(e.hi, d)} with the readings marked">`;
+  s += `<rect x="${L}" y="40" width="${X(e.lo) - L}" height="18" class="rf" stroke="none"/><rect x="${X(e.hi)}" y="40" width="${R - X(e.hi)}" height="18" class="rf" stroke="none"/><rect x="${X(e.lo)}" y="40" width="${X(e.hi) - X(e.lo)}" height="18" class="gf"/>`;
+  s += `<text x="${X(e.lo)}" y="76" text-anchor="middle">${fx(e.lo, d)}</text><text x="${X(e.hi)}" y="76" text-anchor="middle">${fx(e.hi, d)}</text><text x="${X(e.lo)}" y="92" text-anchor="middle" class="mu">lower limit</text><text x="${X(e.hi)}" y="92" text-anchor="middle" class="mu">upper limit</text>`;
+  if (e.nom != null && e.nom > a && e.nom < b) { const xn = X(e.nom), low = Math.abs(xn - X(e.lo)) > 80 && Math.abs(xn - X(e.hi)) > 80; s += `<path d="M${xn} 36v26" class="m" stroke-dasharray="3 3"/><text x="${xn}" y="${low ? 84 : 31}" text-anchor="middle" class="mu">nominal ${fx(e.nom, 0)}</text>`; }
+  vals.forEach((v, i) => { const x = X(v[1]), ok = v[1] >= e.lo - 1e-9 && v[1] <= e.hi + 1e-9, me = v[0] === 'Yours', cls = me ? 'ac' : ok ? 'ok' : 'no';
+    s += `<path d="M${x} 58l-6 9h12z" class="${me ? 'af' : ok ? 'gf' : 'rf'}"/>`; if (me) s += `<text x="${x}" y="24" text-anchor="middle" class="ac">Yours ${fx(v[1], d)}</text>`; });
+  return s + '</svg>';
+}
+function realVerdict(e, v) {
+  const d = rdp(e.res); if (!isFinite(v)) return '';
+  if (v > e.hi + 1e-9) return `<span class="rp-v no">${fx(v, d)} is ${fx(v - e.hi, d)} over the upper limit, ${esc(e.big)}</span>`;
+  if (v < e.lo - 1e-9) return `<span class="rp-v no">${fx(v, d)} is ${fx(e.lo - v, d)} under the lower limit, ${esc(e.small)}</span>`;
+  return `<span class="rp-v ok">${fx(v, d)} is inside ${fx(e.lo, d)} to ${fx(e.hi, d)}. Good part.</span>`;
+}
+function renderReal() {
+  const box = $('#realEx'); if (!box || box.dataset.done) return; box.dataset.done = '1';
+  box.innerHTML = REAL.map((e, n) => { const d = rdp(e.res), band = e.hi - e.lo, ratio = band / e.res;
+    const rows = e.reads.map(r => `<tr><td>${esc(r[0])}</td><td>${fx(r[1], d)}${e.total ? '' : ''}</td></tr>`).join('') + (e.total ? `<tr><td><b>Flatness, highest − lowest</b></td><td><b>${fx(e.reads[0][1] - e.reads[1][1], d)}</b></td></tr>` : '');
+    return `<div class="panel gex"><div class="ph"><h2>Example ${n + 1}. ${esc(e.title)}</h2></div><div class="rp">
+      <figure class="rp-pic" style="margin:0">${REAL_PICS[e.pic]}<figcaption>${esc(e.part)}</figcaption></figure>
+      <div><dl class="rp-facts"><dt>On the drawing</dt><dd><b>${esc(e.draw)}</b></dd><dt>Where it comes from</dt><dd>${esc(e.how)}</dd><dt>Limits</dt><dd><b>${fx(e.lo, d)} to ${fx(e.hi, d)}</b>${e.unit ? ' (' + esc(e.unit) + ')' : ' mm'}, band ${fx(band, d)}</dd>
+        <dt>Tool</dt><dd>${esc(e.tool)}</dd><dt>10 to 1 check</dt><dd>${fx(band, d)} ÷ ${fx(e.res, 3)} = ${fx(ratio, 0)} to 1, ${ratio >= 10 ? '<span class="itag yes">OK</span>' : '<span class="itag no">use a finer tool</span>'}</dd></dl>
+        <ol class="rp-steps">${e.steps.map(t => `<li>${esc(t)}</li>`).join('')}</ol>
+        <div class="tbl-wrap" style="margin-top:10px"><table class="t"><thead><tr><th>Reading</th><th>${e.unit ? esc(e.unit[0].toUpperCase() + e.unit.slice(1)) : 'mm'}</th></tr></thead><tbody>${rows}</tbody></table></div>
+        <div class="rp-band" data-band="${n}">${realBand(e, e.def)}</div>
+        <div class="rp-in"><label for="rpIn${n}">Your reading${e.unit ? ', ' + esc(e.unit) : ', mm'}</label><input id="rpIn${n}" type="number" step="${e.res}" value="${e.def}" data-rp="${n}" inputmode="decimal"><span data-verd="${n}">${realVerdict(e, e.def)}</span></div>
+      </div></div></div>`; }).join('');
+  box.oninput = ev => { const i = ev.target.dataset.rp; if (i == null) return; const e = REAL[+i], v = parseFloat(String(ev.target.value).replace(',', '.'));
+    box.querySelector(`[data-band="${i}"]`).innerHTML = realBand(e, isFinite(v) ? v : null); box.querySelector(`[data-verd="${i}"]`).innerHTML = realVerdict(e, v); };
+}
+// ---------------- tolerance guide: real part examples for GD&T, stack-up and fits ----------------
+const arw = (x1, y1, x2, y2, c) => { const dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy) || 1, ux = dx / L, uy = dy / L, hx = x2 - ux * 8, hy = y2 - uy * 8, px = -uy * 4, py = ux * 4; return `<path class="${c}" d="M${x1} ${y1}L${x2} ${y2}"/><path class="${c}f" d="M${x2} ${y2}L${hx + px} ${hy + py}L${hx - px} ${hy - py}Z"/>`; };
+const dimH = (x1, x2, y, t, cls) => `<path class="dm" d="M${x1} ${y - 6}v12M${x2} ${y - 6}v12"/>${arw((x1 + x2) / 2, y, x1, y, cls || 'dm')}${arw((x1 + x2) / 2, y, x2, y, cls || 'dm')}<text x="${(x1 + x2) / 2}" y="${y - 6}" text-anchor="middle"${cls === 'pl' ? ' class="ac"' : cls === 'mi' ? ' class="wn"' : ''}>${t}</text>`;
+const svgW = (h, body, lab) => `<svg viewBox="0 0 360 ${h}" role="img" aria-label="${lab}">${body}</svg>`;
+const exCard = (title, pic, cap, right) => `<div class="panel gex"><div class="ph"><h2>${esc(title)}</h2></div><div class="rp"><figure class="rp-pic" style="margin:0">${pic}<figcaption>${esc(cap)}</figcaption></figure><div>${right}</div></div></div>`;
+const exIntro = (h, p) => `<div class="panel"><div class="ph"><h2>${h}</h2></div><p class="gl">${p}</p></div>`;
+const tolTxt = (n, u, l) => Math.abs(u + l) < 1e-12 ? `${n} ±${u}` : `${n} ${u >= 0 ? '+' : ''}${u} / ${l > 0 ? '+' : ''}${l}`;
+
+// pictures
+const picSlots = () => svgW(250, `<rect class="af" x="30" y="70" width="300" height="110" rx="3"/><rect class="kf" x="82" y="95" width="16" height="60" rx="8"/><rect class="kf" x="282" y="95" width="16" height="60" rx="8"/><path class="m" d="M90 60v130M290 60v130" stroke-dasharray="5 4"/>
+  ${dimH(30, 90, 206, 'A 15 ±0.1')}${dimH(30, 290, 232, 'B 65 ±0.15')}${arw(30, 30, 290, 30, 'pl')}<text x="160" y="24" class="ac">+B</text>${arw(90, 48, 30, 48, 'mi')}<text x="48" y="44" class="wn">−A</text>
+  <path class="a" d="M90 58H290" stroke-dasharray="2 3"/><text x="150" y="52" class="mu">pitch X = B − A</text>`, 'Milled bracket with two slots dimensioned from the left edge, and the tolerance chain');
+const picShaftGap = () => svgW(240, `<rect class="kf" x="20" y="120" width="320" height="40"/><rect class="kf" x="20" y="100" width="60" height="80"/><path class="m" d="M10 140H350" stroke-dasharray="8 4"/>
+  <rect class="kf" x="80" y="66" width="60" height="54"/><circle class="k" cx="110" cy="93" r="13"/><path class="m" d="M80 80H140M80 106H140"/>
+  <rect class="af" x="140" y="96" width="36" height="24"/><rect x="190" y="114" width="8" height="8" style="fill:var(--bg)"/><rect class="kf" x="190" y="94" width="8" height="26"/>
+  <rect x="181" y="58" width="5" height="60" style="fill:var(--accent-soft);stroke:var(--accent)"/><text x="196" y="70" class="ac">feeler 0.40 in gap X</text>
+  ${arw(80, 22, 190, 22, 'pl')}<text x="120" y="17" class="ac">+L</text>${arw(140, 42, 80, 42, 'mi')}<text x="100" y="38" class="wn">−B</text>${arw(176, 42, 140, 42, 'mi')}<text x="148" y="38" class="wn">−S</text>
+  <text x="22" y="94" class="mu">shoulder</text><text x="88" y="62" class="mu">bearing</text><path class="m" d="M158 112V182M194 118V202"/><text x="134" y="194" class="mu">spacer</text><text x="200" y="214" class="mu">circlip</text>`, 'Shaft with bearing, spacer and circlip, with the chain from the shoulder to the circlip groove');
+const picDowel = () => svgW(250, `<rect class="kf" x="20" y="150" width="300" height="50"/><rect class="af" x="140" y="108" width="180" height="42"/><rect class="kf" x="227" y="96" width="10" height="84" rx="3"/><path class="m" d="M232 86v108" stroke-dasharray="5 4"/>
+  <path class="m" d="M320 100v130"/><text x="24" y="190" class="mu">base</text><text x="150" y="134" class="ac">cover</text><text x="182" y="100" class="mu">dowel</text>
+  ${arw(320, 222, 232, 222, 'pl')}<text x="248" y="240" class="ac">+P1 30</text>${arw(232, 80, 320, 80, 'mi')}<text x="250" y="72" class="wn">−P2 30</text>
+  <text x="24" y="140" class="mu">F1, F2: pin float</text><text x="250" y="102" class="mu">offset X →</text>`, 'Cover plate located on a base plate by a dowel pin, section view, with the chain to the edge offset');
+const picBearing = w => svgW(240, `<path class="m" d="M10 200H350" stroke-dasharray="8 4"/><rect class="kf" x="20" y="150" width="320" height="50"/>
+  <rect class="${w === 'in' ? 'af' : 'kf'}" x="130" y="124" width="70" height="26"/><rect class="${w === 'out' ? 'af' : 'kf'}" x="130" y="74" width="70" height="26"/><circle class="k" cx="165" cy="112" r="14"/>
+  <rect x="100" y="30" width="130" height="44" class="k" style="fill:url(#rpHatch2)"/><defs><pattern id="rpHatch2" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" style="stroke:var(--muted);stroke-width:1.2"/></pattern></defs>
+  <path class="a" d="${w === 'in' ? 'M130 150H200' : 'M130 74H200'}" stroke-width="4"/>
+  <text x="22" y="170" class="mu">shaft</text><text x="236" y="56" class="mu">housing</text><text x="210" y="${w === 'in' ? 141 : 91}" class="ac">${w === 'in' ? 'inner ring on shaft' : 'outer ring in housing'}</text>
+  <text x="22" y="222" class="mu">Upper half of the section, centre line below</text>`, 'Ball bearing on a shaft and in a housing, half section, with the fit being checked highlighted');
+const picPulley = () => svgW(240, `<path class="m" d="M10 200H350" stroke-dasharray="8 4"/><rect class="kf" x="20" y="164" width="320" height="36"/><rect x="150" y="156" width="40" height="8" style="fill:var(--warn-bg);stroke:var(--warn)"/>
+  <path class="af" d="M120 164V60H140L160 30H180L200 60H220V164Z"/><path class="a" d="M120 164H220" stroke-width="4"/><text x="236" y="150" class="ac">bore on shaft</text><text x="196" y="160" class="wn">key</text><text x="22" y="184" class="mu">shaft</text><text x="236" y="70" class="mu">V-belt groove</text>
+  <text x="22" y="222" class="mu">Upper half of the section, centre line below</text>`, 'Pulley on a keyed shaft, half section');
+const picPlate = () => svgW(250, `<rect class="af" x="40" y="40" width="240" height="160" rx="2"/><path class="a" d="M40 40V200M40 200H280" stroke-width="4"/>
+  ${[[70, 173], [250, 173], [70, 67], [250, 67]].map(([x, y]) => `<circle class="kf" cx="${x}" cy="${y}" r="10"/><path class="m" d="M${x - 14} ${y}h28M${x} ${y - 14}v28" stroke-dasharray="3 2"/>`).join('')}
+  <circle cx="70" cy="173" r="16" fill="none" style="stroke:var(--pass)" stroke-dasharray="3 2"/><circle cx="74" cy="170" r="2.5" style="fill:var(--fail)"/>
+  <text x="18" y="125" class="ac">B</text><text x="156" y="220" class="ac">C</text>${dimH(40, 70, 224, '[10]')}<text x="292" y="125" class="mu">A = face</text><text x="292" y="141" class="mu">under</text>
+  <text x="40" y="26">4× Ø6.6 +0.1/0  ⌖ Ø0.2 Ⓜ A B C</text><text x="96" y="160" class="no">measured axis</text><text x="96" y="190" class="ok">zone</text>`, 'Plate with four bolt holes positioned from datums B and C, with the tolerance zone and a measured hole axis');
+const picCentres = () => svgW(230, `<rect class="kf" x="10" y="196" width="340" height="18"/><path class="kf" d="M30 196V150H52L74 140L52 130H30Z M330 196V150H308L286 140L308 130H330Z"/>
+  <rect class="af" x="74" y="122" width="212" height="36"/><rect class="kf" x="150" y="114" width="80" height="52"/><path class="m" d="M60 140H300" stroke-dasharray="8 4"/>
+  <circle class="kf" cx="190" cy="56" r="26"/><circle class="m" cx="190" cy="56" r="20"/><path class="a" d="M190 56L204 42"/><path class="k" d="M190 82V114" stroke-width="3"/>
+  <path class="m" d="M240 180a18 8 0 1 0 0.1 0"/><path class="dm" d="M240 172l6 -3l-1 6z" style="fill:var(--muted)"/><text x="262" y="186" class="mu">turn one rev</text>
+  <text x="152" y="108" class="ac">journal</text><text x="14" y="122" class="mu">centre</text><text x="290" y="122" class="mu">centre</text><text x="224" y="34">⭧ 0.03 A-B</text>`, 'Shaft held between two centres with a dial indicator on the journal, for circular runout');
+const picHeight = () => svgW(240, `<rect class="kf" x="10" y="200" width="340" height="20"/><rect class="af" x="40" y="130" width="170" height="70"/><path class="a" d="M40 130H210" stroke-width="4"/>
+  <rect class="kf" x="280" y="180" width="60" height="20"/><rect class="kf" x="300" y="30" width="12" height="150"/><rect class="kf" x="210" y="112" width="96" height="10"/><path class="k" d="M210 117L196 128" stroke-width="3"/>
+  ${[[62, 1], [110, 2], [158, 3], [196, 4]].map(([x, i]) => `<circle cx="${x}" cy="130" r="3" style="fill:var(--accent)"/><text x="${x - 4}" y="152" class="ac">${i}</text>`).join('')}
+  <path class="dm" d="M24 130V200"/><text x="12" y="170" class="mu" transform="rotate(-90 20 170)">25 ±0.1</text><text x="44" y="236" class="mu">Datum A on the surface plate</text><text x="214" y="104" class="mu">height gauge</text><text x="40" y="22">⫽ 0.05 A on the top face</text>`, 'Block on a surface plate with a height gauge reading the top face at four points');
+
+// stack-up examples
+const STK = [
+  { title: 'Example 1. Slot pitch on a milled bracket', pic: picSlots, cap: 'Both slots are dimensioned from the left edge, so their tolerances add up in the pitch.',
+    rows: [['A', 'Left edge to slot 1', 15, 0.1, -0.1, -1], ['B', 'Left edge to slot 2', 65, 0.15, -0.15, 1]], gap: 'Slot pitch X', req: [49.7, 50.3], reqTxt: 'Two pins on the mating part are 50 apart, so the pitch must stay within 50 ±0.3.',
+    meas: 50.08, measHow: 'Caliper from the left wall of slot 1 to the left wall of slot 2. With both slots the same width this equals the centre distance.', lesson: 'If the pitch matters, dimension it directly as 50 ±0.3. Then only one tolerance counts and the chain disappears.' },
+  { title: 'Example 2. Axial play of a bearing on a shaft', pic: picShaftGap, cap: 'Shoulder, bearing, spacer and circlip in a row. The gap is drawn larger than real.',
+    rows: [['L', 'Shoulder to circlip groove', 24.3, 0.08, 0, 1], ['B', 'Bearing 6204 width', 14, 0, -0.12, -1], ['S', 'Spacer', 10, 0.05, -0.05, -1]], gap: 'Axial gap X', req: [0.05, 0.5], reqTxt: 'The circlip must go in (gap at least 0.05) and the bearing must not float more than 0.5.',
+    meas: 0.40, measHow: 'Feeler gauge between the spacer and the circlip. The 0.40 leaf slides in, the 0.45 leaf does not.', lesson: 'Worst case reaches 0.55, so a few assemblies could float too much. RSS stays under 0.50. Tighten the groove position, accept a small reject rate, or add a wave washer to take up the play.' },
+  { title: 'Example 3. Flush edge of a cover pinned to a base, with GD&T', pic: picDowel, cap: 'Section through the dowel. The cover edge should be flush with the base edge.',
+    rows: [['P1', 'Base edge to dowel hole, position Ø0.1', 30, 0.05, -0.05, 1], ['F1', 'Pin float in base hole, Ø6 H7/m6', 0, 0.004, -0.004, 1], ['F2', 'Pin float in cover hole Ø6.05 ±0.02', 0, 0.033, -0.033, 1], ['P2', 'Cover edge to dowel hole, position Ø0.1', 30, 0.05, -0.05, -1]], gap: 'Edge offset X', req: [-0.1, 0.1], reqTxt: 'Flush within ±0.1 so the step does not catch a seal or a hand.',
+    meas: 0.06, measHow: 'Dial indicator resting on the base, swept across the step onto the cover. The needle moves 0.06.', lesson: 'A position tolerance of Ø0.1 lets the hole axis move 0.05 either way, so it enters the stack as ±0.05. Pin float is half of the largest clearance between pin and hole: (6.012 − 6.004) ÷ 2 and (6.07 − 6.004) ÷ 2.' },
+];
+function stackCalc(e) { let m = 0, wc = 0, ss = 0; const R = e.rows.map(([k, n, nom, u, l, d]) => { const mean = nom + (u + l) / 2, T = (u - l) / 2; m += d * mean; wc += T; ss += T * T; return { k, n, nom, u, l, d, mean, T }; }); return { R, m, wc, rss: Math.sqrt(ss) }; }
+function stackBand(e, c, meas) {
+  const W = 680, H = 132, L = 30, Rr = 450, lo = Math.min(e.req[0], c.m - c.wc * 1.5), hi = Math.max(e.req[1], c.m + c.wc * 1.5), pad = (hi - lo) * 0.12, a = lo - pad, b = hi + pad, X = v => L + (Math.min(b, Math.max(a, v)) - a) / (b - a) * (Rr - L);
+  const bar = (y, lo2, hi2, t) => { const ok = lo2 >= e.req[0] - 1e-9 && hi2 <= e.req[1] + 1e-9; return `<rect x="${X(lo2)}" y="${y}" width="${Math.max(2, X(hi2) - X(lo2))}" height="10" class="${ok ? 'gf' : 'rf'}"/><text x="464" y="${y + 9}" class="${ok ? 'ok' : 'no'}">${t} ${fx(lo2, 3)} to ${fx(hi2, 3)}</text>`; };
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Required range, worst case and RSS results on one number line">`;
+  s += `<rect x="${L}" y="30" width="${Rr - L}" height="14" class="rf" stroke="none"/><text x="464" y="42" class="mu">green = required</text><rect x="${X(e.req[0])}" y="30" width="${X(e.req[1]) - X(e.req[0])}" height="14" class="gf"/>`;
+  s += `<text x="${X(e.req[0])}" y="58" text-anchor="middle">${fx(e.req[0], 2)}</text><text x="${X(e.req[1])}" y="58" text-anchor="middle">${fx(e.req[1], 2)}</text><text x="${(X(e.req[0]) + X(e.req[1])) / 2}" y="58" text-anchor="middle" class="mu">required</text>`;
+  s += bar(72, c.m - c.wc, c.m + c.wc, 'Worst case') + bar(92, c.m - c.rss, c.m + c.rss, 'RSS') + bar(112, c.m - 1.5 * c.rss, c.m + 1.5 * c.rss, 'RSS × 1.5');
+  if (isFinite(meas)) s += `<path d="M${X(meas)} 30l-6 -10h12z" class="af"/><text x="${X(meas)}" y="14" text-anchor="middle" class="ac">Measured ${fx(meas, 3)}</text>`;
+  return s + '</svg>';
+}
+function stackCard(e, i) {
+  const c = stackCalc(e), d = 3;
+  const rows = c.R.map(r => `<tr><td><b>${r.k}</b> ${esc(r.n)}</td><td>${tolTxt(r.nom, r.u, r.l)}</td><td>${r.d > 0 ? '+' : '−'}</td><td>${fx(r.mean, d)}</td><td>±${fx(r.T, d)}</td></tr>`).join('');
+  const right = `<p class="gl">${esc(e.reqTxt)}</p>
+    <div class="tbl-wrap" style="margin-top:10px"><table class="t"><thead><tr><th>Contributor</th><th>On the drawing</th><th>Dir</th><th>Mean</th><th>± equal</th></tr></thead><tbody>${rows}
+    <tr><td colspan="3"><b>${esc(e.gap)}</b> = sum of Dir × Mean</td><td><b>${fx(c.m, d)}</b></td><td></td></tr></tbody></table></div>
+    <pre class="calc">Worst case  ±T = ${c.R.map(r => fx(r.T, 3)).join(' + ')} = ±${fx(c.wc, 3)}
+RSS         ±T = √(${c.R.map(r => fx(r.T, 3) + '²').join(' + ')}) = ±${fx(c.rss, 3)}
+RSS × 1.5   ±T = ±${fx(1.5 * c.rss, 3)}  (some guides use 1.5 for bought-in parts)</pre>
+    <div class="rp-band" data-sb="${i}">${stackBand(e, c, e.meas)}</div>
+    <div class="gx-in"><label>Measured ${esc(e.gap.toLowerCase())}, mm<input type="number" step="0.01" value="${e.meas}" data-sk="${i}"></label><span data-sv="${i}">${stackVerdict(e, e.meas)}</span></div>
+    <p class="sysnote" style="margin-top:8px">How it was measured: ${esc(e.measHow)}</p>
+    <div class="callout" style="margin-top:10px">${esc(e.lesson)}</div>`;
+  return exCard(e.title, e.pic(), e.cap, right);
+}
+const stackVerdict = (e, v) => !isFinite(v) ? '' : v < e.req[0] - 1e-9 ? `<span class="rp-v no">${fx(v, 3)} is below the required ${fx(e.req[0], 2)}</span>` : v > e.req[1] + 1e-9 ? `<span class="rp-v no">${fx(v, 3)} is above the required ${fx(e.req[1], 2)}</span>` : `<span class="rp-v ok">${fx(v, 3)} is inside ${fx(e.req[0], 2)} to ${fx(e.req[1], 2)}. Good assembly.</span>`;
+
+// fit examples
+const FITX = [
+  { title: 'Example 1. Bearing inner ring on a shaft', pic: () => picBearing('in'), cap: 'Bearing 6204 (20 × 47 × 14) pressed on a shaft.', hole: ['Bearing bore Ø20, ISO 492 normal class', 20, 0, -0.010], shaft: ['Shaft seat Ø20 k5', 20, 0.011, 0.002],
+    why: 'The inner ring turns with the shaft, so it needs a light press fit or it creeps and wears the seat.', mh: 19.995, ms: 20.007, how: 'Shaft: micrometer on the seat, two places 90° apart. Bearing bore: rarely measured, take the middle of its band or use a bore gauge.' },
+  { title: 'Example 2. Bearing outer ring in a housing', pic: () => picBearing('out'), cap: 'Same bearing, outer ring in a bored housing.', hole: ['Housing bore Ø47 H7', 47, 0.025, 0], shaft: ['Bearing outside Ø47, ISO 492 normal class', 47, 0, -0.011],
+    why: 'The outer ring stands still under the load, so a sliding to snug fit lets you assemble it by hand.', mh: 47.012, ms: 46.995, how: 'Housing: bore gauge set on a 47 mm ring gauge. Bearing: micrometer across the outer ring.' },
+  { title: 'Example 3. Pulley on a keyed shaft', pic: picPulley, cap: 'The key drives the pulley, the bore only locates it.', hole: ['Pulley bore Ø25 H7', 25, 0.021, 0], shaft: ['Shaft seat Ø25 h6', 25, 0, -0.013],
+    why: 'A locational clearance fit slides on by hand and still runs true. The key carries the torque.', mh: 25.010, ms: 24.993, how: 'Pulley: bore gauge or a Ø25 H7 plug gauge. Shaft: micrometer on the seat.' },
+];
+const fitLim = e => { const H = [e.hole[1] + e.hole[3], e.hole[1] + e.hole[2]], S = [e.shaft[1] + e.shaft[3], e.shaft[1] + e.shaft[2]]; return { H, S, cmin: H[0] - S[1], cmax: H[1] - S[0] }; };
+const fitKind = (a, b) => a >= -1e-9 ? 'Clearance fit' : b <= 1e-9 ? 'Interference fit' : 'Transition fit';
+const gapTxt = g => g >= 0 ? `clearance ${fx(g, 3)}` : `interference ${fx(-g, 3)}`;
+function fitSVG(e, mh, ms) {
+  const f = fitLim(e), um = v => (v - e.hole[1]) * 1000, vals = [um(f.H[0]), um(f.H[1]), um(f.S[0]), um(f.S[1]), 0], lo = Math.min(...vals) - 8, hi = Math.max(...vals) + 8, Y = v => 20 + (hi - v) / (hi - lo) * 150;
+  let s = `<svg viewBox="0 0 560 200" role="img" aria-label="Fit diagram: hole and shaft tolerance zones in micrometres against the nominal line">`;
+  s += `<path class="k" d="M30 ${Y(0)}H530"/><text x="34" y="${Y(0) - 6}" class="mu">nominal Ø${e.hole[1]}</text>`;
+  const zone = (x, a, b, cls, t) => `<rect x="${x}" y="${Y(b)}" width="110" height="${Math.max(2, Y(a) - Y(b))}" class="${cls}"/><text x="${x + 55}" y="${Y(b) - 6}" text-anchor="middle">${t}</text><text x="${x + 116}" y="${Y(b) + 4}">${b >= 0 ? '+' : ''}${fx(b, 0)}</text><text x="${x + 116}" y="${Y(a) + 4}">${a >= 0 ? '+' : ''}${fx(a, 0)}</text>`;
+  s += zone(170, um(f.H[0]), um(f.H[1]), 'af', 'Hole') + zone(340, um(f.S[0]), um(f.S[1]), 'kf', 'Shaft');
+  const mk = (x, v, ok) => isFinite(v) ? `<path d="M${x - 6} ${Y(um(v))}H${x + 116}" style="stroke:${ok ? 'var(--pass)' : 'var(--fail)'};stroke-width:2.5"/>` : '';
+  s += mk(170, mh, mh >= f.H[0] - 1e-9 && mh <= f.H[1] + 1e-9) + mk(340, ms, ms >= f.S[0] - 1e-9 && ms <= f.S[1] + 1e-9);
+  return s + `<text x="34" y="194" class="mu">µm from nominal. Coloured lines are the measured sizes.</text></svg>`;
+}
+function fitOut(e, mh, ms) {
+  const f = fitLim(e), okH = mh >= f.H[0] - 1e-9 && mh <= f.H[1] + 1e-9, okS = ms >= f.S[0] - 1e-9 && ms <= f.S[1] + 1e-9, g = mh - ms;
+  return `<div class="gx-res"><div class="${okH ? 'ok' : 'no'}"><b>${fx(mh, 3)}</b><span>Hole ${okH ? 'inside' : 'outside'} ${fx(f.H[0], 3)} to ${fx(f.H[1], 3)}</span></div><div class="${okS ? 'ok' : 'no'}"><b>${fx(ms, 3)}</b><span>Shaft ${okS ? 'inside' : 'outside'} ${fx(f.S[0], 3)} to ${fx(f.S[1], 3)}</span></div>
+    <div class="${okH && okS ? 'ok' : 'no'}"><b>${fx(Math.abs(g), 3)}</b><span>Actual ${g >= 0 ? 'clearance' : 'interference'} of this pair</span></div></div>`;
+}
+function fitCard(e, i) {
+  const f = fitLim(e);
+  const right = `<dl class="rp-facts"><dt>Hole</dt><dd><b>${esc(e.hole[0])}</b>: ${tolTxt(e.hole[1], e.hole[2], e.hole[3])} → ${fx(f.H[0], 3)} to ${fx(f.H[1], 3)}</dd><dt>Shaft</dt><dd><b>${esc(e.shaft[0])}</b>: ${tolTxt(e.shaft[1], e.shaft[2], e.shaft[3])} → ${fx(f.S[0], 3)} to ${fx(f.S[1], 3)}</dd>
+    <dt>Fit</dt><dd><b>${fitKind(f.cmin, f.cmax)}</b>, from ${gapTxt(f.cmin)} to ${gapTxt(f.cmax)}</dd><dt>Why this fit</dt><dd>${esc(e.why)}</dd></dl>
+    <pre class="calc">Tightest = smallest hole − largest shaft = ${fx(f.H[0], 3)} − ${fx(f.S[1], 3)} = ${fx(f.cmin, 3)}
+Loosest  = largest hole − smallest shaft = ${fx(f.H[1], 3)} − ${fx(f.S[0], 3)} = ${fx(f.cmax, 3)}
+(negative means interference)</pre>
+    <div class="rp-band" data-fb="${i}">${fitSVG(e, e.mh, e.ms)}</div>
+    <div class="gx-in"><label>Measured hole, mm<input type="number" step="0.001" value="${e.mh}" data-fk="${i}" data-w="h"></label><label>Measured shaft, mm<input type="number" step="0.001" value="${e.ms}" data-fk="${i}" data-w="s"></label></div>
+    <div data-fo="${i}">${fitOut(e, e.mh, e.ms)}</div><p class="sysnote" style="margin-top:8px">How to measure: ${esc(e.how)}</p>`;
+  return exCard(e.title, e.pic(), e.cap, right);
+}
+
+// GD&T examples
+const posCalc = (x, y, dm) => { const dx = x - 10, dy = y - 10, p = 2 * Math.hypot(dx, dy), bonus = Math.max(0, Math.min(0.1, dm - 6.6)), okS = dm >= 6.6 - 1e-9 && dm <= 6.7 + 1e-9; return { dx, dy, p, bonus, allow: 0.2 + bonus, okS }; };
+function posSVG(r) {
+  const S = 300, k = 120 / 0.3, cx = 140, cy = 100, sx = cx + r.dx * k, sy = cy - r.dy * k, ok = r.okS && r.p <= r.allow + 1e-9;
+  return `<svg viewBox="0 0 560 200" role="img" aria-label="Position tolerance zone with the measured hole axis"><path class="m" d="M${cx - 110} ${cy}H${cx + 110}M${cx} ${cy - 95}V${cy + 95}" stroke-dasharray="4 3"/>
+    <circle cx="${cx}" cy="${cy}" r="${0.1 * k}" fill="none" class="m" stroke-dasharray="5 4"/><circle cx="${cx}" cy="${cy}" r="${r.allow / 2 * k}" class="gf" fill-opacity=".5"/>
+    <circle cx="${Math.max(20, Math.min(260, sx))}" cy="${Math.max(10, Math.min(190, sy))}" r="5" style="fill:${ok ? 'var(--pass)' : 'var(--fail)'}"/><text x="${cx + 4}" y="${cy - 4}" class="mu">true position</text>
+    <text x="290" y="60">Dashed: Ø0.200 at MMC</text><text x="290" y="82" class="ok">Green: Ø${fx(r.allow, 3)} with bonus</text><text x="290" y="104" class="${ok ? 'ok' : 'no'}">Dot: measured axis, Ø${fx(r.p, 3)}</text><text x="290" y="130" class="mu">Scale: zone drawn about 400×</text></svg>`;
+}
+function posOut(r) {
+  const ok = r.okS && r.p <= r.allow + 1e-9;
+  return `<div class="gx-res"><div><b>${r.dx >= 0 ? '+' : ''}${fx(r.dx, 3)}, ${r.dy >= 0 ? '+' : ''}${fx(r.dy, 3)}</b><span>Off true position in X, Y</span></div><div class="${ok ? 'ok' : 'no'}"><b>Ø${fx(r.p, 3)}</b><span>Position = 2 × √(dx² + dy²)</span></div>
+    <div class="${r.okS ? 'ok' : 'no'}"><b>+${fx(r.bonus, 3)}</b><span>Bonus = size − MMC 6.600${r.okS ? '' : ', size out of limits'}</span></div><div class="${ok ? 'ok' : 'no'}"><b>Ø${fx(r.allow, 3)}</b><span>Allowed = 0.200 + bonus</span></div></div>
+    <p style="margin:8px 0 0">${ok ? '<span class="rp-v ok">Hole is in position. Good part.</span>' : `<span class="rp-v no">${r.okS ? 'Hole is out of position.' : 'Hole size is outside 6.600 to 6.700.'} Reject or review.</span>`}</p>`;
+}
+const RUN = [0, 0.008, 0.015, 0.018, 0.014, 0.006, -0.002, -0.004];
+const parseNums = t => String(t).split(/[,;\s]+/).map(v => parseFloat(v.replace(',', '.'))).filter(isFinite);
+function parOut(v) {
+  if (v.length < 2) return '<span class="rp-v no">Type at least two readings</span>';
+  const mx = Math.max(...v), mn = Math.min(...v), par = mx - mn, okS = v.every(x => x >= 24.9 - 1e-9 && x <= 25.1 + 1e-9), okP = par <= 0.05 + 1e-9;
+  return `<div class="gx-res"><div class="${okS ? 'ok' : 'no'}"><b>${fx(mn, 3)} to ${fx(mx, 3)}</b><span>Size: every reading in 24.900 to 25.100</span></div><div class="${okP ? 'ok' : 'no'}"><b>${fx(par, 3)}</b><span>Parallelism = highest − lowest, limit 0.050</span></div></div>
+    <p style="margin:8px 0 0">${okS && okP ? '<span class="rp-v ok">Size and parallelism both pass. Good part.</span>' : `<span class="rp-v no">${!okS ? 'A reading is outside the size limits. ' : ''}${!okP ? 'The top face tilts more than 0.05.' : ''}</span>`}</p>`;
+}
+function renderGx(t) {
+  if (t === 'charts') { const box = $('#exCharts'); if (!box || box.dataset.done) return; box.dataset.done = '1';
+    const r0 = posCalc(10.07, 9.95, 6.66);
+    box.innerHTML = exIntro('Real parts: measure GD&amp;T', 'Three common frames on real parts. Each one shows the tool on the part, the numbers you read, and how the reading turns into a pass or a fail. Change the readings to see the result move.')
+      + exCard('Example 1. Position of a bolt hole, with bonus at MMC', picPlate(), 'Plate with four clearance holes for M6 bolts. Datum A is the face it sits on, B and C are the two edges.',
+        `<dl class="rp-facts"><dt>On the drawing</dt><dd><b>4× Ø6.6 +0.1/0, ⌖ Ø0.2 Ⓜ A B C</b>, hole centres basic [10] from B and C</dd><dt>Tool</dt><dd>CMM, or a height gauge on a surface plate with the part on datum A and against B, then against C</dd><dt>What you read</dt><dd>Hole centre X from B, hole centre Y from C, and the hole size</dd></dl>
+         <div class="rp-band" data-pb>${posSVG(r0)}</div>
+         <div class="gx-in"><label>X from B, mm<input type="number" step="0.01" value="10.07" data-pos="x"></label><label>Y from C, mm<input type="number" step="0.01" value="9.95" data-pos="y"></label><label>Hole Ø, mm<input type="number" step="0.01" value="6.66" data-pos="d"></label></div><div data-po>${posOut(r0)}</div>`)
+      + exCard('Example 2. Circular runout of a shaft journal', picCentres(), 'Shaft between centres. The centres define the axis A-B.',
+        `<dl class="rp-facts"><dt>On the drawing</dt><dd><b>⭧ 0.03 A-B</b> on the bearing journal</dd><dt>Tool</dt><dd>Dial indicator reading 0.002 mm, shaft turned one full revolution between centres</dd><dt>Rule</dt><dd>Runout is the total movement of the needle in one turn, highest minus lowest. Check it at several places along the journal.</dd></dl>
+         <div class="tbl-wrap" style="margin-top:10px"><table class="t"><thead><tr>${RUN.map((_, i) => `<th>${i * 45}°</th>`).join('')}</tr></thead><tbody><tr>${RUN.map(v => `<td>${fx(v, 3)}</td>`).join('')}</tr></tbody></table></div>
+         <div class="rp-band" data-rb>${realBand({ lo: 0, hi: 0.03, res: 0.002, reads: [], nom: null }, 0.022)}</div>
+         <div class="rp-in"><label for="gxRun">Total needle movement, mm</label><input id="gxRun" type="number" step="0.002" value="0.022" data-run><span data-ro>${realVerdict({ lo: 0, hi: 0.03, res: 0.002, big: 'the journal runs out too much. The bearing will wobble. Regrind on centres.', small: '' }, 0.022)}</span></div>
+         <p class="sysnote" style="margin-top:8px">0.018 − (−0.004) = 0.022, inside 0.03.</p>`)
+      + exCard('Example 3. Size and parallelism of a top face', picHeight(), 'Block on its datum face A on a surface plate.',
+        `<dl class="rp-facts"><dt>On the drawing</dt><dd><b>25 ±0.1</b> height, and <b>⫽ 0.05 A</b> on the top face</dd><dt>Tool</dt><dd>Height gauge with a dial indicator, reading 0.01 mm, at four points spread over the face</dd><dt>Two checks</dt><dd>Every reading must be inside the size limits, and the spread of the readings must be inside the parallelism tolerance. A part can pass one and fail the other.</dd></dl>
+         <div class="gx-in"><label>Readings at points 1 to 4, mm<input class="wide" type="text" value="25.02, 25.04, 25.01, 25.03" data-par></label></div><div data-pa>${parOut([25.02, 25.04, 25.01, 25.03])}</div>
+         <p class="sysnote" style="margin-top:8px">Try 25.08, 24.99, 25.06, 25.02. Every size is fine but the spread is 0.09, so the face is not parallel enough.</p>`);
+    box.oninput = ev => { const t = ev.target;
+      if (t.dataset.pos != null) { const g = k => parseFloat(box.querySelector(`[data-pos="${k}"]`).value); const r = posCalc(g('x'), g('y'), g('d')); if ([r.dx, r.dy, r.p].every(isFinite)) { box.querySelector('[data-pb]').innerHTML = posSVG(r); box.querySelector('[data-po]').innerHTML = posOut(r); } }
+      if (t.dataset.run != null) { const v = parseFloat(t.value), e = { lo: 0, hi: 0.03, res: 0.002, reads: [], nom: null, big: 'the journal runs out too much. The bearing will wobble. Regrind on centres.', small: 'a reading below zero total is not possible. Check the number.' }; box.querySelector('[data-rb]').innerHTML = realBand(e, isFinite(v) ? v : null); box.querySelector('[data-ro]').innerHTML = realVerdict(e, v); }
+      if (t.dataset.par != null) box.querySelector('[data-pa]').innerHTML = parOut(parseNums(t.value)); };
+  }
+  if (t === 'stack') { const box = $('#exStack'); if (!box || box.dataset.done) return; box.dataset.done = '1';
+    box.innerHTML = exIntro('Real parts: stack-ups you can measure', 'Three stack-ups on real assemblies, in the same steps as the worked example above: draw the loop, give every size a direction, turn every tolerance into an equal ± about its mean, then add them by worst case and by RSS. Then measure the real gap and see where it lands.') + STK.map(stackCard).join('');
+    box.oninput = ev => { const i = ev.target.dataset.sk; if (i == null) return; const e = STK[+i], v = parseFloat(ev.target.value); box.querySelector(`[data-sb="${i}"]`).innerHTML = stackBand(e, stackCalc(e), v); box.querySelector(`[data-sv="${i}"]`).innerHTML = stackVerdict(e, v); };
+  }
+  if (t === 'fits') { const box = $('#exFits'); if (!box || box.dataset.done) return; box.dataset.done = '1';
+    box.innerHTML = exIntro('Real parts: one shaft assembly, three fits', 'A bearing and a pulley on one shaft. Each fit shows where it is, the two tolerance zones, and what a measured pair gives you. Type your own hole and shaft readings.') + FITX.map(fitCard).join('');
+    box.oninput = ev => { const i = ev.target.dataset.fk; if (i == null) return; const e = FITX[+i], h = parseFloat(box.querySelector(`[data-fk="${i}"][data-w="h"]`).value), s = parseFloat(box.querySelector(`[data-fk="${i}"][data-w="s"]`).value); if (!isFinite(h) || !isFinite(s)) return; box.querySelector(`[data-fb="${i}"]`).innerHTML = fitSVG(e, h, s); box.querySelector(`[data-fo="${i}"]`).innerHTML = fitOut(e, h, s); };
+  }
+}
+$('#guideTabs').onclick = e => { const b = e.target.closest('[data-t]'); if (!b) return; $$('#guideTabs [data-t]').forEach(x => x.setAttribute('aria-pressed', x === b)); ['basics', 'real', 'charts', 'stack', 'fits'].forEach(k => $('#g-' + k).hidden = k !== b.dataset.t); if (b.dataset.t === 'real') renderReal(); renderGx(b.dataset.t); $('#main').scrollTo(0, 0); };
 $('#v-tolguide').addEventListener('click', e => { const b = e.target.closest('[data-try]'); if (!b) return; const k = b.dataset.try; go('tolerance');
   const tab = t => { tolTab = t; renderTol(); }; const show = sel => setTimeout(() => { const el = $(sel); if (el) el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }, 60); const setv = (sel, v) => { $(sel).value = v; };
   if (k === 'charts') { S.iso = 'mK'; saveOpt(); tab('charts'); setv('#tNom', 46); setv('#tAng', 90); setv('#tLeg', 20); lookup(); isoTables(); $('#main').scrollTo(0, 0); }
@@ -2623,9 +2942,9 @@ const asm = (() => {
     triad.visible = mode === 'exploded' && selSet.size > 0 && tool === 'orbit'; if (triad.visible) { triad.position.copy(selCenter()); sizeTriad(); }
     $('#expCtl').hidden = mode !== 'exploded'; $('#asmMove').hidden = mode !== 'exploded';
     if (am.sel.some(s => { const m = meshes[s.c.i]; return !m || m.position.x !== s.off[0] || m.position.y !== s.off[1] || m.position.z !== s.off[2]; })) clearMeas();
-    $('#asmMeas').hidden = tool !== 'measure'; const info = $('#asmInfo'); info.hidden = tool !== 'measure';
+    $('#asmMeas').hidden = tool !== 'measure'; const info = $('#asmInfo');
     if (tool === 'measure') { if (!am.sel.length) info.textContent = 'Measure faces, edges and vertices on any part.'; } else info.textContent = mode === 'exploded' ? (selSet.size > 1 ? `${selSet.size} parts selected: drag an arrow to move them together. Ctrl + click adds or removes a part.` : selSet.size ? `${insts[[...selSet][0]].name}: drag an arrow to move it. Ctrl + click to select more.` : 'Click a part, then drag an arrow to move it. Ctrl + click to select several.') : (insts.length < 2 && mode === 'exploded' ? 'Only one part.' : 'Drag to rotate, right drag to pan, scroll to zoom.');
-    need = true;
+    info.hidden = !info.textContent; need = true;
   }
   function sizeTriad() { if (!triad || !triad.visible) return; const s = sph.r * 0.09; triad.scale.set(s, s, s); need = true; }
   function startDrag(axis, e) { if (!selSet.size) return; const a = new THREE.Vector3(); a.setComponent(axis, 1); drag = { a, start: [e.clientX, e.clientY], m0: new Map([...selSet].map(ti => [ti, insts[ti].manual.clone()])), s: triad.scale.x, snap: snap() }; }

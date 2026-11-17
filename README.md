@@ -16,7 +16,7 @@ This folder is the whole website. It needs no server code. Upload the folder as 
 
 ## Before you publish: replace these
 
-1. `https://www.example.com` in `robots.txt`, `sitemap.xml` and every page's canonical link. Replace it with your domain using find and replace across the folder.
+1. The domain is set to `https://dfmareviewstudio.netlify.app` in `robots.txt`, `sitemap.xml`, canonical links and the link preview tags. If you move to your own domain, find and replace it across the folder. `og-image.png` is the picture LinkedIn shows when someone shares the link.
 2. The contact email is set to shahidfardeen2204@gmail.com in `about.html`, `privacy.html` and the review form.
 3. The [brackets] in `privacy.html` and `terms.html`.
 
